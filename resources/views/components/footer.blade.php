@@ -4,7 +4,7 @@
 
             <div class="mb-6 md:mb-0 flex flex-col items-start gap-4 ml-10 max-w-sm">
                 <img src="{{ asset('images/logoFooter.png') }}" class="w-48" alt="FlowBite Logo" />
-                <span class="text-lg font-inter text-[#B8B6B0] break-words">
+                <span class="text-lg font-inter font-medium text-[#B8B6B0] break-words">
                     Lorep ipsum dolor sit amet Lorep ipsum dolor sit amet Lorep ipsum dolor sit amet Lorep
                 </span>
                 <div class="flex items-center text-[#B8B6B0] space-x-2">
@@ -22,11 +22,11 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-6">
                 <div class="flex flex-col justify-between">
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-1.5"><a href="/" class="hover:underline">Home</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline">Pick Up</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline">Product</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline">Community</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline">About Us</a></li>
+                        <li class="mb-1.5"><a href="/" class="hover:underline font-inter">Home</a></li>
+                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Pick Up</a></li>
+                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Product</a></li>
+                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Community</a></li>
+                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">About Us</a></li>
                     </ul>
 
                     <div class="flex justify-end mt-6 space-x-6">
@@ -37,6 +37,6 @@
             </div>
         </div>
 
-        <hr class="my-6 w-11/12 border-[#B8B6B0] sm:mx-auto lg:my-8 border-4" />
+        <hr class="my-6 w-11/12 border-[#B8B6B0] sm:mx-auto lg:my-8 border-4 rounded-2xl" />
     </div>
 </footer>

@@ -1,4 +1,4 @@
-<nav class="border-b border-gray-300 mx-8" x-data="{ isOpen: false }">
+<nav class="border-b border-black mx-8" x-data="{ isOpen: false }">
     <div class="w-full px-4">
         <div class="relative flex h-16 items-center justify-between max-w-full mx-auto">
 
