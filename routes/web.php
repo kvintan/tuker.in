@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/product', function () {
-    return view('product');
-});
+Route::get('/product', [ProductController::class, 'index']);
 
-Route::get('/product/detail', function () {
-    return view('productDetail');
-});
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
 Route::get('/auction', function () {
     return view('auction');
+});
+
+Route::get('/about', function () {
+    return view('about');
 });

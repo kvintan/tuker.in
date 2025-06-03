@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="min-h-screen bg-gray-100 flex flex-col items-center py-12 px-4">
+    <div class="min-h-screen flex flex-col items-center py-12 px-4">
         <img src="{{ asset('images/imgAuction.png') }}" alt="Auction Banner" class="w-full object-cover rounded-xl mb-8">
         <h1 class="text-4xl font-bold font-inter text-gray-800 mb-4">Auction</h1>
         <p class="text-lg text-gray-700 text-center max-w-5xl font-inter mb-10">
