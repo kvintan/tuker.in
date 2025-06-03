@@ -23,10 +23,10 @@
                 <div class="flex flex-col justify-between">
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-1.5"><a href="/" class="hover:underline font-inter">Home</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Pick Up</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Product</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">Community</a></li>
-                        <li class="mb-1.5"><a href="" class="hover:underline font-inter">About Us</a></li>
+                        <li class="mb-1.5"><a href="/pickup" class="hover:underline font-inter">Pick Up</a></li>
+                        <li class="mb-1.5"><a href="/product" class="hover:underline font-inter">Product</a></li>
+                        <li class="mb-1.5"><a href="/community" class="hover:underline font-inter">Community</a></li>
+                        <li class="mb-1.5"><a href="/about" class="hover:underline font-inter">About Us</a></li>
                     </ul>
 
                     <div class="flex justify-end mt-6 space-x-6">

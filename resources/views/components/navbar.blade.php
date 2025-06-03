@@ -5,9 +5,9 @@
             <!-- Navigasi kiri -->
             <div class="hidden md:flex space-x-8 items-center">
                 <x-nav-link href="/" :active="request()->is('pickup')">Pick Up</x-nav-link>
-                <x-nav-link href="/posts" :active="request()->is('auction')">Auction</x-nav-link>
-                <x-nav-link href="/about" :active="request()->is('product')">Product</x-nav-link>
-                <x-nav-link href="/contact" :active="request()->is('community')">Community</x-nav-link>
+                <x-nav-link href="/auction" :active="request()->is('auction')">Auction</x-nav-link>
+                <x-nav-link href="/product" :active="request()->is('product')">Product</x-nav-link>
+                <x-nav-link href="/community" :active="request()->is('community')">Community</x-nav-link>
             </div>
 
             <!-- Logo tengah -->
@@ -83,10 +83,10 @@
     <!-- Mobile menu -->
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <x-nav-link href="/" :active="request()->is('/')">Pick Up</x-nav-link>
-            <x-nav-link href="/posts" :active="request()->is('posts')">Auction</x-nav-link>
-            <x-nav-link href="/about" :active="request()->is('about')">Product</x-nav-link>
-            <x-nav-link href="/contact" :active="request()->is('contact')">Community</x-nav-link>
+            <x-nav-link href="/pickup" :active="request()->is('pickup')">Pick Up</x-nav-link>
+            <x-nav-link href="/auction" :active="request()->is('auction')">Auction</x-nav-link>
+            <x-nav-link href="/product" :active="request()->is('product')">Product</x-nav-link>
+            <x-nav-link href="/community" :active="request()->is('community')">Community</x-nav-link>
         </div>
         <div class="border-t border-gray-700 pt-4 pb-3">
             <div class="flex items-center px-5">

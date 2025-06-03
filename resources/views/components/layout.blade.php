@@ -1,6 +1,5 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en" class="min-h-screen bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
@@ -11,18 +10,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-full">
-    <div class="min-h-full">
+<body class="min-h-screen bg-gradient-to-r from-green-50 via-white to-yellow-100">
+    <div class="flex flex-col min-h-screen">
 
-        <x-Navbar></x-Navbar>
-        <main>
+        <x-Navbar />
+
+        <!-- Konten Utama -->
+        <main class="flex-grow">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
         </main>
-        <x-footer></x-footer>
-    </div>
 
+        <x-footer />
+
+    </div>
 </body>
 
 </html>
