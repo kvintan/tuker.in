@@ -33,9 +33,9 @@
         </div>
 
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center mt-10 gap-6 font-inter">
-            <button class="bg-[#37654E] hover:bg-[#2a4b3a] text-white font-bold px-6 py-3 rounded-xl flex items-center">
+            <a href="/product" class="bg-[#37654E] hover:bg-[#2a4b3a] text-white font-bold px-6 py-3 rounded-xl flex items-center">
                 ← Continue Shopping
-            </button>
+            </a>
 
             <div class="text-center w-1/3">
                 <div class="bg-[#37654E] text-white font-bold px-6 py-2 rounded-xl mb-2 font-inter">
