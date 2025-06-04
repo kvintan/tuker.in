@@ -22,3 +22,7 @@ Route::get('/about', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
+
+Route::get('/register', function () {
+    return view('register');
+});

@@ -50,7 +50,6 @@
             </div>
         </div>
 
-        <!-- Script -->
         <script>
             const prices = {
                 apron: 25000,
