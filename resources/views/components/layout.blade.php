@@ -10,7 +10,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gradient-to-r from-green-50 via-white to-yellow-100">
+<body class="min-h-screen bg-gradient-to-tr from-green-300 via-white to-yellow-200
+">
     <div class="flex flex-col min-h-screen">
 
         <x-Navbar />

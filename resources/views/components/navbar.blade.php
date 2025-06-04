@@ -20,7 +20,7 @@
             <!-- Profil kanan -->
             <div class="hidden md:flex items-center space-x-4">
                 <div class="hidden md:flex space-x-8 items-center">
-                    <x-nav-link href="/" :active="request()->is('about')">About Us</x-nav-link>
+                    <x-nav-link href="/about" :active="request()->is('about')">About Us</x-nav-link>
                 </div>
                 <div class="relative">
                     <a href="/cart" class="text-gray-600 hover:text-gray-800 relative">
