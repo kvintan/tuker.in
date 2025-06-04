@@ -1,6 +1,6 @@
 <x-layout>
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div class="w-full bg-[#EFF5EC] rounded-lg shadow">
+            <div class="w-full bg-[#EFF5EC] rounded-lg shadow border-1">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class=" text-center text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-2x">
                         Register
