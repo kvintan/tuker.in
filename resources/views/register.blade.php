@@ -27,9 +27,9 @@
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required="">
                         </div>
                         <div class="flex flex-col gap-5 items-center justify-center">
-                            <button type="submit" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-lg px-5 py-2.5 text-center bg-[#37654E] w-1/4 h-15 text-xl">Sign up</button>
-                            <p class="text-sm font-light text-black">
-                                Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline ">Login here</a>
+                            <button type="submit" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-3xl px-5 py-2.5 text-center bg-[#37654E] w-1/4 h-15 text-xl">Sign up</button>
+                            <p class="text-sm text-black">
+                                Already have an account? <a href="/login" class="font-bold text-primary-600 hover:underline text-[#37654E]">Login here</a>
                             </p>
                         </div>
                     </form>

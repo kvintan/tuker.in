@@ -30,3 +30,7 @@ Route::get('/register', function () {
 Route::get('/pickup', function () {
     return view('pickup');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
