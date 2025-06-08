@@ -1,27 +1,27 @@
-<x-layout>
-    <div class="flex flex-col md:flex-row items-center justify-between px-6 py-16 max-w-7xl mx-auto">
-        <!-- Text Content -->
-        <div class="md:w-1/2 mb-10 md:mb-0">
-            <h1 class="font-inter font-extrabold text-4xl md:text-6xl leading-tight mb-6">
-                Pick Up Trash,<br> the Smart Way
-            </h1>
-            <p class="font-inter text-gray-700 mb-6">
-                tuker.in offers innovative solutions to make waste disposal and recycling efficient, while helping you
-                contribute to a cleaner planet
-            </p>
-            <a href="/product">
-                <div
-                    class="flex bg-[#37654E] w-36 md:w-40 items-center justify-center hover:bg-[#2a4b3a] text-white font-bold font-inter py-3 px-8 rounded-full transition duration-200 cursor-pointer">
-                    Explore
-                </div>
-            </a>
-        </div>
-
-        <!-- Image Content -->
-        <div class="md:w-1/2 flex justify-center">
-            <div class="">
-                <img src="{{ asset('images/home.png') }}" alt="Trash Bin" class="w-full h-full object-cover">
+<div>
+    <!-- Text Content -->
+    <div class="md:w-1/2 mb-10 md:mb-0">
+        <h1 class="font-inter font-extrabold text-4xl md:text-6xl leading-tight mb-6">
+            Pick Up Trash,<br> the Smart Way
+        </h1>
+        <p class="font-inter text-gray-700 mb-6">
+            tuker.in offers innovative solutions to make waste disposal and recycling efficient, while helping you
+            contribute to a cleaner planet
+        </p>
+        <a href="/product">
+            <div
+                class="flex bg-[#37654E] w-36 md:w-40 items-center justify-center hover:bg-[#2a4b3a] text-white font-bold font-inter py-3 px-8 rounded-full transition duration-200 cursor-pointer">
+                Explore
             </div>
+        </a>
+    </div>
+
+    <!-- Image Content -->
+    <div class="md:w-1/2 flex justify-center">
+        <div class="">
+            <img src="{{ asset('images/home.png') }}" alt="Trash Bin" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-between px-6 py-16 max-w-7xl mx-auto">
         </div>
     </div>
 
@@ -140,7 +140,7 @@
     </div>
 
 
-</x-layout>
+</div>
 <script>
     // Set target waktu auction (misalnya: besok jam 12 siang)
     const deadline = new Date();

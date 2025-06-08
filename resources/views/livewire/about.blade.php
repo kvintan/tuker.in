@@ -1,4 +1,4 @@
-<x-layout>
+<div>
     <div class="flex flex-col items-center">
         <!-- Bagian Atas -->
         <div class="mt-14 text-center max-w-4xl px-4">
@@ -105,4 +105,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</div>

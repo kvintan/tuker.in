@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Livewire\About;
 
 Route::get('/', function () {
     return view('home');
@@ -15,9 +16,7 @@ Route::get('/auction', function () {
     return view('auction');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', About::class);
 
 Route::get('/cart', function () {
     return view('cart');

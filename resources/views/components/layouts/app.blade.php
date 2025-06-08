@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>home page</title>
+    <title>{{ $title ?? 'Tuker.in' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
 <body class="min-h-screen bg-gradient-to-tr from-green-300 via-white to-yellow-200
 ">
+    @livewire('partials.navbar')
     <div class="flex flex-col min-h-screen">
-
-        <x-Navbar />
 
         <!-- Konten Utama -->
         <main class="flex-grow">
@@ -24,9 +23,8 @@
             </div>
         </main>
 
-        <x-footer />
-
     </div>
+    @livewire('partials.footer')
     @livewireScripts
 </body>
 
