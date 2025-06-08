@@ -8,6 +8,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>home page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body class="min-h-screen bg-gradient-to-tr from-green-300 via-white to-yellow-200
@@ -26,6 +27,7 @@
         <x-footer />
 
     </div>
+    @livewireScripts
 </body>
 
 </html>
