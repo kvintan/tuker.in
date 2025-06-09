@@ -7,6 +7,7 @@ use App\Livewire\Auction;
 use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\Pickup;
+use App\Livewire\Product;
 
 Route::get('/product', [ProductController::class, 'index']);
 
@@ -15,6 +16,7 @@ Route::get('/about', About::class);
 Route::get('/auction', Auction::class);
 Route::get('/cart', Cart::class);
 Route::get('/pickup', Pickup::class);
+Route::get('/product', Product::class);
 
 Route::get('/register', function () {
     return view('register');
