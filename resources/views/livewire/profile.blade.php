@@ -1,12 +1,15 @@
-<x-layout>
+<div>
     <div class="min-h-screen px-10 py-14">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="flex flex-col items-center gap-6 w-full lg:w-1/4">
                 <div class="relative">
-                    <img src="{{ asset('images/chelsea.png') }}" alt="Profile Picture" class="w-56 h-56 object-cover rounded-full shadow-md border-4 border-white">
+                    <img src="{{ asset('images/chelsea.png') }}" alt="Profile Picture"
+                        class="w-56 h-56 object-cover rounded-full shadow-md border-4 border-white">
                     <div class="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h2l2-3h10l2 3h2a1 1 0 011 1v11a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 7h2l2-3h10l2 3h2a1 1 0 011 1v11a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 11a3 3 0 100 6 3 3 0 000-6z" />
                         </svg>
                     </div>
@@ -18,9 +21,12 @@
 
                     <div class="flex items-center gap-4">
                         <div class="bg-[#649B35] rounded-full w-12 h-12 p-2 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 13a2 2 0 100-4 2 2 0 000 4z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17 13a2 2 0 100-4 2 2 0 000 4z" />
                             </svg>
                         </div>
                         <div>
@@ -74,4 +80,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</div>
