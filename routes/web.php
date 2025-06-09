@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Livewire\About;
 use App\Livewire\Auction;
+use App\Livewire\Cart;
 use App\Livewire\Home;
 
 Route::get('/product', [ProductController::class, 'index']);
@@ -13,10 +14,7 @@ Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product
 Route::get('/', Home::class);
 Route::get('/about', About::class);
 Route::get('/auction', Auction::class);
-
-Route::get('/cart', function () {
-    return view('cart');
-});
+Route::get('/cart', Cart::class);
 
 Route::get('/register', function () {
     return view('register');
