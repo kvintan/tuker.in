@@ -16,6 +16,7 @@ class product extends Model
         'auction_end_time',
         'image_path',
         'slug',
+        'in_stock'
     ];
 
     protected static function booted()
@@ -25,5 +26,9 @@ class product extends Model
             $product->slug = $slug;
             $product->saveQuietly();
         });
+    }
+
+    public function orderItems() {
+        return $this->hasMany(OrderItem::class);
     }
 }

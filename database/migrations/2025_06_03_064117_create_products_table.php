@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->timestamps();
             $table->string('slug')->unique()->nullable();
+            $table->boolean('in_stock')->default(true);
         });
     }
 
