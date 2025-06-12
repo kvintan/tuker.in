@@ -20,7 +20,7 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-6">
                 <div class="flex flex-col justify-between">
-                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                    <ul class="text-gray-500 font-medium">
                         <li class="mb-1.5"><a href="/" class="hover:underline font-inter">Home</a></li>
                         <li class="mb-1.5"><a href="/pickup" class="hover:underline font-inter">Pick Up</a></li>
                         <li class="mb-1.5"><a href="/product" class="hover:underline font-inter">Product</a></li>
