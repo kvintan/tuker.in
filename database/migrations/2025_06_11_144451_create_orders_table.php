@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('payment_method')->nullable();
             $table->string('currency')->nullable();
             $table->string('notes')->nullable();
+            $table->string('status')->default('new'); // or nullable if you prefer
+            $table->string('shipping_method')->nullable();
             $table->timestamps();
         });
     }

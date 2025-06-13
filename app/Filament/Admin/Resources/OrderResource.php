@@ -175,6 +175,23 @@ class OrderResource extends Resource
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('shipping_method')
+                ->label('Shipping Method')
+                ->searchable()
+                ->sortable(),
+
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->searchable()
+                    ->sortable()
+                    ->badge()
+                    ->colors([
+                        'new' => 'info',
+                        'processing' => 'warning',
+                        'shipped' => 'success',
+                        'delivered' => 'success'
+                    ]),
+
                 TextColumn::make('currency')
                     ->sortable()
                     ->searchable(),

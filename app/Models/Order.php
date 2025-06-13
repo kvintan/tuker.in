@@ -14,6 +14,8 @@ class Order extends Model
         'grand_total',
         'payment_method',
         'currency',
+        'status',
+        'shipping_method',
         'notes',
     ];
 
