@@ -12,7 +12,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Number;
 use Filament\Resources\Resource;
-use Filament\Actions\ActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
@@ -21,12 +21,13 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\ActionGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\ToggleButtons;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Admin\Resources\OrderResource\Pages;
 use App\Filament\Admin\Resources\OrderResource\RelationManagers;
-use Filament\Actions\DeleteAction;
 
 class OrderResource extends Resource
 {
@@ -54,6 +55,35 @@ class OrderResource extends Resource
                                 'cod' => 'Cash on Delivery'
                             ])
                             ->required(),
+
+                        ToggleButtons::make('status')
+                            ->inline()
+                            ->default('new')
+                            ->required()
+                            ->options([
+                                'new' => 'New',
+                                'processing' => 'Processing',
+                                'shipped' => 'Shipped',
+                                'delivered' => 'Delivered'
+                            ])
+                            ->colors([
+                                'new' => 'info',
+                                'processing' => 'warning',
+                                'shipped' => 'success',
+                                'delivered' => 'success'
+                            ])
+                            ->icons([
+                                'new' => 'heroicon-m-sparkles',
+                                'processing' => 'heroicon-m-arrow-path',
+                                'shipped' => 'heroicon-m-truck',
+                                'delivered' => 'heroicon-m-check-badge'
+                            ]),
+
+                        Select::make('shipping_method')
+                            ->options([
+                                'jne' => 'JNE',
+                                'jnt' => 'JNT'
+                            ]),
 
                         Select::make('currency')
                             ->options([
@@ -163,10 +193,10 @@ class OrderResource extends Resource
                 //
             ])
             ->actions([
-                ActionGroup::make([
+                Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
-                    DeleteAction::make(),
+                    Tables\Actions\DeleteAction::make(),
                 ])
             ])
             ->bulkActions([
