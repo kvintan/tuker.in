@@ -28,6 +28,7 @@ use Filament\Forms\Components\ToggleButtons;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Admin\Resources\OrderResource\Pages;
 use App\Filament\Admin\Resources\OrderResource\RelationManagers;
+use App\Filament\Admin\Resources\OrderResource\RelationManagers\AddressRelationManager;
 
 class OrderResource extends Resource
 {
@@ -138,13 +139,12 @@ class OrderResource extends Resource
                                 ->label('Grand Total')
                                 ->content(function (Get $get, Set $set) {
                                     $total = 0;
-                                    if ($repeaters = $get('items')) {
-                                        return $total;
-                                    }
+                                    $items = $get('items') ?? [];
 
-                                    foreach ($repeaters as $key => $repeaters) {
-                                        $total += $get("items.{$key}.total_amount");
+                                    foreach ($items as $item) {
+                                        $total += $item['total_amount'] ?? 0;
                                     }
+                                    
                                     $set('grand_total', $total);
                                     return Number::currency($total, 'IDR');
                                 }),
@@ -210,6 +210,7 @@ class OrderResource extends Resource
     {
         return [
             //
+            AddressRelationManager::class
         ];
     }
 
