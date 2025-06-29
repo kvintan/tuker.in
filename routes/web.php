@@ -10,6 +10,7 @@ use App\Livewire\Profile;
 use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Livewire\Auth\Register;
 
 Route::get('/product', [ProductController::class, 'index']);
 
@@ -21,3 +22,4 @@ Route::get('/pickup', Pickup::class);
 Route::get('/product', Product::class);
 Route::get('/profile', Profile::class);
 Route::get('/login', Login::class);
+Route::get('/register', Register::class);
