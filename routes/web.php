@@ -10,7 +10,9 @@ use App\Livewire\Profile;
 use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Register;
+use App\Livewire\Auth\ResetPassword;
 
 Route::get('/product', [ProductController::class, 'index']);
 
@@ -23,3 +25,5 @@ Route::get('/product', Product::class);
 Route::get('/profile', Profile::class);
 Route::get('/login', Login::class);
 Route::get('/register', Register::class);
+Route::get('/forgot-password', ForgotPassword::class);
+Route::get('/reset-password', ResetPassword::class);
