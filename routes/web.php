@@ -13,7 +13,6 @@ use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\About;
 use App\Livewire\Auction;
-use App\Http\Controllers\ProductController;
 
 Route::get('/', Home::class);
 Route::get('/about', About::class);
