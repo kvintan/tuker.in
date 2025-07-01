@@ -5,7 +5,7 @@
     <!-- card product -->
     <div class="grid grid-cols-4 mt-10">
         @foreach ($products as $product)
-            <a href="{{ route('product.show', $product->slug) }}">
+            <a href="/product/{{ $product->slug }}">
                 <div class="flex flex-col items-center mb-10">
                     <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
                     <div class="text-center">
