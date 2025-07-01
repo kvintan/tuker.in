@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
+use App\Livewire\ProductDetail;
 
 Route::get('/product', [ProductController::class, 'index']);
 
@@ -22,6 +23,7 @@ Route::get('/auction', Auction::class);
 Route::get('/cart', Cart::class);
 Route::get('/pickup', Pickup::class);
 Route::get('/product', Product::class);
+Route::get('/product/{slug}', ProductDetail::class);
 Route::get('/profile', Profile::class);
 Route::get('/login', Login::class);
 Route::get('/register', Register::class);
