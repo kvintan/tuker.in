@@ -5,7 +5,7 @@
             <!-- Navigasi kiri -->
             <div class="hidden md:flex space-x-8 items-center">
                 @component('livewire.partials.nav-link', [
-                    'href' => '/',
+                    'href' => '/pickup',
                     'active' => request()->is('pickup'),
                 ])
                     Pick Up
