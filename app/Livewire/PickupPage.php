@@ -43,7 +43,7 @@ class PickupPage extends Component
         ]);
 
         session()->flash('message', 'Pickup successfully scheduled!');
-        return redirect()->route('thank-you');
+        return redirect()->to('/');
     }
 
 
