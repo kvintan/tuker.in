@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
             @foreach ($products as $product)
                 @php
-                    $highestBid = $product->highestBid()?->bid_amount ?? $product->starting_bid;
+                    $highestBid = $product->highestBid?->bid_amount ?? $product->starting_bid;
                     $endTimestamp = \Carbon\Carbon::parse($product->auction_end_time)->timestamp;
                     $isEnded = now()->timestamp > $endTimestamp;
                 @endphp
@@ -68,7 +68,7 @@
                                 <p class="text-gray-500">Auction has ended</p>
                             @endif
                         @else
-                            <button wire:click="testLog" wire:loading.attr="disabled"
+                            <button wire:click="placeBid({{ $product->id }})"
                                 class="bg-green-800 hover:bg-green-700 text-white font-semibold text-base h-9 px-6 py-1 rounded-xl w-full transition duration-200 cursor-pointer mt-3">
                                 Bid now + Rp1.000
                             </button>

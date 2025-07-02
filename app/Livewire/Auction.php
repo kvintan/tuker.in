@@ -9,19 +9,13 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class Auction extends Component
-{
-    public function testLog()
-{
-    logger()->info('===> testLog CALLED');
-}
-    
+{   
     public function placeBid($productId)
     {
-        logger()->info('===> placeBid CALLED', ['product_id' => $productId]);
         $product = Product::findOrFail($productId);
         $user = User::find(Auth::id());
 
-        $currentBid = $product->highestBid()?->bid_amount ?? $product->starting_bid;
+        $currentBid = $product->highestBid?->bid_amount ?? $product->starting_bid;
         $newBidAmount = $currentBid + 1000;
 
         if ($user->balance < $newBidAmount) {
@@ -35,8 +29,14 @@ class Auction extends Component
             'bid_amount' => $newBidAmount,
         ]);
 
+        $product->unsetRelation('highestBid'); // Hapus cache relasi
+        $product->load('highestBid'); // Ambil ulang dari DB
+
         $user->balance -= $newBidAmount;
         $user->save();
+
+        $this->dispatch('$refresh');
+        session()->flash('success', 'Bid berhasil!');
     }
 
     public function render()

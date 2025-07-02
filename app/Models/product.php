@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class product extends Model
+class Product extends Model
 {
     protected $fillable = [
         'name',
@@ -37,6 +37,6 @@ class product extends Model
     }
 
     public function highestBid() {
-        return $this->hasOne(Bids::class)->latestOfMany('bid_amount');
+        return $this->hasOne(Bids::class)->latestOfMany();
     }
 }
