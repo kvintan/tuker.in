@@ -24,6 +24,7 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class);
 Route::get('/forgot-password', ForgotPassword::class);
 Route::get('/reset-password', ResetPassword::class);
+Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
 Route::get('/product', Product::class);
 Route::get('/product/{slug}', ProductDetail::class);
 Route::get('/auction', Auction::class);

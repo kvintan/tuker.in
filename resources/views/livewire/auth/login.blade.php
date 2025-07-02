@@ -54,6 +54,11 @@
                             Don’t have account? <a href="/register"
                                 class="font-bold text-primary-600 hover:underline text-[#37654E]">Sign Up</a>
                         </p>
+                        <a href="/forgot-password">
+                            <p class="text-sm text-black underline ml-[65vw] mt-[-17vh]">
+                                Forgot Password
+                            </p>
+                        </a>
                     </div>
                 </form>
             </div>
