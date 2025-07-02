@@ -10,15 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class Auction extends Component
 {
-    public $products;
-
-public function mount()
-    {
-        $this->products = Product::where('is_auction', true)->whereNotNull('auction_end_time')->get();
-    }
-
+    public function testLog()
+{
+    logger()->info('===> testLog CALLED');
+}
+    
     public function placeBid($productId)
     {
+        logger()->info('===> placeBid CALLED', ['product_id' => $productId]);
         $product = Product::findOrFail($productId);
         $user = User::find(Auth::id());
 
@@ -38,8 +37,6 @@ public function mount()
 
         $user->balance -= $newBidAmount;
         $user->save();
-
-        // Tidak perlu update $this->products lagi karena akan diambil dari render()
     }
 
     public function render()
@@ -48,7 +45,7 @@ public function mount()
             ->where('is_auction', true)
             ->whereNotNull('auction_end_time')
             ->get();
-            
+
         return view('livewire.auction', compact('products'));
     }
 }
