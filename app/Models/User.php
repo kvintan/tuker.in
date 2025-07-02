@@ -50,19 +50,29 @@ class User extends Authenticatable
         ];
     }
 
-    public function orders() {
+    public function orders()
+    {
         return $this->hasMany(Order::class);
     }
 
-    public function pickups() {
+    public function communityPosts()
+    {
+        return $this->hasMany(CommunityPost::class);
+    }
+
+
+    public function pickups()
+    {
         return $this->hasMany(Pickup::class);
     }
 
-    public function bids() {
+    public function bids()
+    {
         return $this->hasMany(Bids::class);
     }
 
-    public function canAccessPanel(Panel $panel): bool {
+    public function canAccessPanel(Panel $panel): bool
+    {
         return $this->email == 'admin@gmail.com';
     }
 }

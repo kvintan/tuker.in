@@ -6,6 +6,7 @@ use App\Livewire\About;
 use App\Livewire\Auction;
 use App\Livewire\Product;
 use App\Livewire\Profile;
+use App\Livewire\Community;
 use App\Livewire\Auth\Login;
 use App\Livewire\PickupPage;
 use App\Livewire\Auth\Register;
@@ -26,6 +27,7 @@ Route::get('/reset-password', ResetPassword::class);
 Route::get('/product', Product::class);
 Route::get('/product/{slug}', ProductDetail::class);
 Route::get('/auction', Auction::class);
+Route::get('/community', Community::class)->name('community');
 
 // Pages that require login
 Route::middleware(['auth'])->group(function () {
