@@ -57,6 +57,10 @@ class User extends Authenticatable
         return $this->hasMany(Pickup::class);
     }
 
+    public function bids() {
+        return $this->hasMany(Bids::class);
+    }
+
     public function canAccessPanel(Panel $panel): bool {
         return $this->email == 'admin@gmail.com';
     }

@@ -31,4 +31,12 @@ class product extends Model
     public function orderItems() {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function bids() {
+        return $this->hasMany(Bids::class);
+    }
+
+    public function highestBid() {
+        return $this->bids()->orderByDesc('bid_amount')->first();
+    }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price')->nullable();
-            $table->boolean('is_auction')->default(false);
+            $table->boolean('is_auction')->default(true);
             $table->integer('starting_bid')->nullable();
             $table->timestamp('auction_end_time')->nullable();
             $table->string('image_path')->nullable();

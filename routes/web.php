@@ -22,13 +22,13 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class);
 Route::get('/forgot-password', ForgotPassword::class);
 Route::get('/reset-password', ResetPassword::class);
+Route::get('/product', Product::class);
+Route::get('/product/{slug}', ProductDetail::class);
+Route::get('/auction', Auction::class);
 
 // Pages that require login
 Route::middleware(['auth'])->group(function () {
   Route::get('/profile', Profile::class);
   Route::get('/pickup', PickupPage::class);
   Route::get('/cart', Cart::class);
-  Route::get('/product', Product::class);
-  Route::get('/product/{slug}', ProductDetail::class);
-  Route::get('/auction', Auction::class);
 });
