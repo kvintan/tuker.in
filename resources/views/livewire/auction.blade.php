@@ -61,6 +61,12 @@
                         <p class="text-black mb-1">Current bid: <strong>Rp
                                 {{ number_format($highestBid, 0, ',', '.') }}</strong></p>
 
+                        @if ($product->highestBid && $product->highestBid->user)
+                            <p class="text-sm text-gray-700">
+                                Highest bid: <strong>{{ $product->highestBid->user->name }}</strong>
+                            </p>
+                        @endif
+
                         @if ($isEnded)
                             @if ($product->highestBid && $product->highestBid->user_id == auth()->id())
                                 <p class="text-green-600 font-bold">🎉 You won!</p>

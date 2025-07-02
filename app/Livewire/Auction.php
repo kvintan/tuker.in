@@ -13,35 +13,49 @@ class Auction extends Component
     public function placeBid($productId)
     {
         $product = Product::findOrFail($productId);
-        $user = User::find(Auth::id());
+    $user = User::find(Auth::id());
 
-        $currentBid = $product->highestBid?->bid_amount ?? $product->starting_bid;
-        $newBidAmount = $currentBid + 1000;
+    $currentBid = $product->highestBid?->bid_amount ?? $product->starting_bid;
+    $newBidAmount = $currentBid + 1000;
 
-        if ($user->balance < $newBidAmount) {
-            session()->flash('error', 'Saldo tidak mencukupi untuk bid.');
-            return;
-        }
+    // Cari bid sebelumnya dari user ini untuk produk ini
+    $previousBid = Bids::where('product_id', $productId)
+        ->where('user_id', $user->id)
+        ->orderByDesc('bid_amount')
+        ->first();
 
-        Bids::create([
-            'user_id' => $user->id,
-            'product_id' => $product->id,
-            'bid_amount' => $newBidAmount,
-        ]);
+    // Saldo yang tersedia adalah saldo saat ini + bid sebelumnya (kalau ada)
+    $availableBalance = $user->balance + ($previousBid->bid_amount ?? 0);
 
-        $product->unsetRelation('highestBid'); // Hapus cache relasi
-        $product->load('highestBid'); // Ambil ulang dari DB
+    if ($availableBalance < $newBidAmount) {
+        session()->flash('error', 'Saldo tidak mencukupi untuk bid.');
+        return;
+    }
 
-        $user->balance -= $newBidAmount;
-        $user->save();
+    // Kembalikan saldo dari bid sebelumnya (jika ada)
+    if ($previousBid) {
+        $user->balance += $previousBid->bid_amount;
+        $previousBid->delete(); // Hapus bid lama agar tidak dobel
+    }
 
-        $this->dispatch('$refresh');
-        session()->flash('success', 'Bid berhasil!');
+    // Buat bid baru
+    Bids::create([
+        'user_id' => $user->id,
+        'product_id' => $product->id,
+        'bid_amount' => $newBidAmount,
+    ]);
+
+    // Kurangi saldo
+    $user->balance -= $newBidAmount;
+    $user->save();
+
+    $this->dispatch('$refresh');
+    session()->flash('success', 'Bid berhasil!');
     }
 
     public function render()
     {
-        $products = Product::with('highestBid')
+        $products = Product::with(['highestBid.user'])
             ->where('is_auction', true)
             ->whereNotNull('auction_end_time')
             ->get();
