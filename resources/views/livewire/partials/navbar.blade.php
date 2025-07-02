@@ -51,45 +51,56 @@
                         About Us
                     @endcomponent
                 </div>
-                <div class="relative">
-                    <a href="/cart" class="text-gray-600 hover:text-gray-800 relative">
-                        <!-- Icon keranjang -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m14-9l2 9M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
-                        </svg>
 
-                        <!-- Badge jumlah item -->
-                        <span
-                            class="absolute -top-2 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
-                            3
-                        </span>
-                    </a>
-                </div>
-                <div class="relative">
-                    <button type="button" @click="isOpen = !isOpen"
-                        class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
-                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="w-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="User avatar" />
-                    </button>
-
-                    <div x-show="isOpen" x-transition @click.away="isOpen = false"
-                        @keydown.escape.window="isOpen = false"
-                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
-                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem">Your Profile</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem">Settings</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem">Sign out</a>
+                @auth
+                    <!-- Jika user login -->
+                    <div class="relative">
+                        <a href="/cart" class="text-gray-600 hover:text-gray-800 relative">
+                            <!-- Icon keranjang -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m14-9l2 9M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+                            </svg>
+                            <span
+                                class="absolute -top-2 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                                3
+                            </span>
+                        </a>
                     </div>
-                </div>
+
+                    <div class="relative">
+                        <button type="button" @click="isOpen = !isOpen"
+                            class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="w-10 rounded-full"
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="User avatar" />
+                        </button>
+
+                        <div x-show="isOpen" x-transition @click.away="isOpen = false"
+                            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your
+                                Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign
+                                    out</button>
+                            </form>
+                        </div>
+                    </div>
+                @endauth
+
+                @guest
+                    <!-- Jika user belum login -->
+                    <a href="/login" class="text-black font-inter font-semibold py-2 px-4 text-[1vw] transition text-lg">
+                        Login
+                    </a>
+                @endguest
             </div>
+
 
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
