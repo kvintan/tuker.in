@@ -22,7 +22,7 @@
                 $isEnded = now()->timestamp > $endTimestamp;
             @endphp
 
-            <div x-data="{
+            <div wire:key="product-{{ $product->id }}" x-data="{
                 countdown: {{ $endTimestamp - now()->timestamp }},
                 formatTime(seconds) {
                     let hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
@@ -67,7 +67,7 @@
                             <p class="text-gray-500">Auction has ended</p>
                         @endif
                     @else
-                        <button wire:click="placeBid({{ $product->id }})"
+                        <button wire:click="placeBid({{ $product->id }})" wire:loading.attr="disabled"
                             class="bg-green-800 hover:bg-green-700 text-white font-semibold text-base h-9 px-6 py-1 rounded-xl w-full transition duration-200 cursor-pointer mt-3">
                             Bid now + Rp1.000
                         </button>

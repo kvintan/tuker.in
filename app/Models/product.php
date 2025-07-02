@@ -37,6 +37,6 @@ class product extends Model
     }
 
     public function highestBid() {
-        return $this->bids()->orderByDesc('bid_amount')->first();
+        return $this->hasOne(Bids::class)->latestOfMany('bid_amount');
     }
 }

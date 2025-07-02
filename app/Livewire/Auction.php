@@ -30,23 +30,25 @@ public function mount()
             return;
         }
 
-        // Save Bid
         Bids::create([
             'user_id' => $user->id,
             'product_id' => $product->id,
             'bid_amount' => $newBidAmount,
         ]);
 
-        // Optional: kurangi saldo user secara langsung
-        $user->balance = $user->balance - $newBidAmount;
+        $user->balance -= $newBidAmount;
         $user->save();
 
-        // Refresh produk
-        $this->products = Product::where('is_auction', true)->whereNotNull('auction_end_time')->get();
+        // Tidak perlu update $this->products lagi karena akan diambil dari render()
     }
 
     public function render()
     {
-        return view('livewire.auction');
+        $products = Product::with('highestBid')
+            ->where('is_auction', true)
+            ->whereNotNull('auction_end_time')
+            ->get();
+            
+        return view('livewire.auction', compact('products'));
     }
 }
