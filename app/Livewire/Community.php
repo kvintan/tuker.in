@@ -3,7 +3,9 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\CommunityPost;
+use Livewire\Attributes\Title;
 
+#[Title('Community - Tuker.in')]
 class Community extends Component
 {
     public $likedPosts = [];
