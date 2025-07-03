@@ -26,6 +26,7 @@
     </div>
     @livewire('partials.footer')
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

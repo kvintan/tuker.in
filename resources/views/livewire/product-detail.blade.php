@@ -21,10 +21,29 @@
             </div>
 
             <p class="font-inter mt-[5vh]">{{ $product->description }}</p>
-            <button
+            <button wire:click="addToCart"
                 class="w-[30vw] h-[5vh] bg-[#37654E] text-white flex items-center justify-center font-inter rounded-[1vw] font-bold mt-[10vh]">
                 Add to Cart
             </button>
+
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Livewire.on('cart-updated', () => {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Produk berhasil ditambahkan ke keranjang!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                })
+            })
+        </script>
+    @endpush
+
 </div>
