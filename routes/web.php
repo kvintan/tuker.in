@@ -30,7 +30,9 @@ Route::get('/reset-password/{token}', ResetPassword::class)->name('password.rese
 Route::get('/product', Product::class);
 Route::get('/product/{slug}', ProductDetail::class);
 Route::get('/auction', Auction::class);
-Route::get('/community', Community::class)->name('community');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/community', Community::class)->name('community');
+});
 
 // Pages that require login
 Route::middleware(['auth'])->group(function () {

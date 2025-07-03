@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\CommunityPost;
 use Livewire\Attributes\Title;
+use Illuminate\Support\Facades\Storage;
+
 
 #[Title('Community - Tuker.in')]
 class Community extends Component
@@ -33,10 +35,8 @@ class Community extends Component
         if ($post->user_id !== auth()->id()) {
             abort(403, 'Unauthorized');
         }
-
-        // Hapus gambar dari storage jika ada
         if ($post->image) {
-            \Storage::disk('public')->delete($post->image);
+            Storage::disk('public')->delete($post->image);
         }
 
         $post->delete();
