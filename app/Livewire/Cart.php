@@ -36,6 +36,8 @@ class Cart extends Component
     {
         CartManagement::removeCartItem($productId);
         $this->loadCart();
+
+        $this->dispatch('cart-item-deleted');
     }
 
     private function loadCart()
@@ -43,4 +45,6 @@ class Cart extends Component
         $this->cartItems = CartManagement::getCartItemsFromCookie();
         $this->grandTotal = CartManagement::calculateGrandTotal($this->cartItems);
     }
+
+    
 }

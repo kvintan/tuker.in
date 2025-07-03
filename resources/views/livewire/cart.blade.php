@@ -7,6 +7,7 @@
     <!-- Product List -->
     <div class="max-w-5xl mx-auto space-y-6 font-inter">
         @foreach ($cartItems as $item)
+            @php $key = 'cart-' . $item['product_id']; @endphp
             <div class="border-b pb-4 flex items-center gap-4 w-full">
                 <div class="w-20 h-20">
                     <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}"
@@ -27,7 +28,7 @@
                     {{ number_format($item['total_amount'], 0, ',', '.') }}
                 </div>
 
-                <button wire:click="remove('{{ $item['product_id'] }}")" class="ml-4">
+                <button wire:click="remove('{{ $item['product_id'] }}')" class="ml-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="w-6 h-6 text-red-500 hover:text-red-700 transition">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,4 +58,22 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Livewire.on('cart-item-deleted', () => {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Produk berhasil dihapus dari keranjang!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                })
+            })
+        </script>
+    @endpush
+
 </div>
