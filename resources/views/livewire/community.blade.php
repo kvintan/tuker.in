@@ -16,9 +16,14 @@
 
         {{-- Image --}}
         <div class="mb-3 overflow-hidden rounded-md flex-1 flex items-center justify-center">
-            <img src="{{ $post->image }}" class="w-full h-full object-contain rounded-md" alt="Post Image">
+            <img src="{{ asset('storage/' . $post->image) }}" class="w-full h-full object-contain rounded-md" alt="Post Image">
+
         </div>
 
+        {{-- Caption --}}
+        <div class="mb-3 text-gray-700 text-sm">
+            {{ $post->caption }}
+        </div>
 
         {{-- Like --}}
         <div class="flex items-center text-gray-600 text-sm">
@@ -41,4 +46,15 @@
         </div>
     </div>
     @endforeach
+    {{-- Floating Action Button --}}
+    <a href="{{ route('post.create') }}"
+        class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition z-50"
+        title="Create Post">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 4v16m8-8H4" />
+        </svg>
+    </a>
+
 </div>

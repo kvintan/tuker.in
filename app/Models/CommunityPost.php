@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +8,12 @@ class CommunityPost extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'image', 'likes'];
+    protected $fillable = [
+        'user_id',
+        'image',
+        'caption',
+        'likes',
+    ];
 
     public function user()
     {

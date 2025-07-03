@@ -3,6 +3,7 @@
 use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\About;
+use App\Livewire\CreatePost;
 use App\Livewire\Auction;
 use App\Livewire\Product;
 use App\Livewire\Profile;
@@ -15,6 +16,7 @@ use App\Livewire\Auth\ResetPassword;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommunityPostController;
 
 Route::get('/', Home::class);
 Route::get('/about', About::class);
@@ -43,3 +45,5 @@ Route::middleware(['auth'])->group(function () {
     return redirect('/login')->with('success', 'You have been logged out successfully.');
   })->name('logout');
 });
+
+Route::get('/create-post', CreatePost::class)->name('post.create');
