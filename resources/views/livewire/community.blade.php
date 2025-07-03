@@ -12,12 +12,22 @@
             </div>
             @endif
             <span class="font-semibold text-gray-800">{{ $post->user->name }}</span>
+            @if (auth()->id() === $post->user_id)
+            <button wire:click="deletePost({{ $post->id }})"
+                onclick="return confirm('Yakin ingin menghapus postingan ini?')"
+                class="ml-auto text-[#37654E] hover:text-red-500 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a1 1 0 00-1-1h-6a1 1 0 00-1 1m3-4v4" />
+                </svg>
+            </button>
+            @endif
         </div>
 
         {{-- Image --}}
         <div class="mb-3 overflow-hidden rounded-md flex-1 flex items-center justify-center">
             <img src="{{ asset('storage/' . $post->image) }}" class="w-full h-full object-contain rounded-md" alt="Post Image">
-
         </div>
 
         {{-- Caption --}}
@@ -48,7 +58,7 @@
     @endforeach
     {{-- Floating Action Button --}}
     <a href="{{ route('post.create') }}"
-        class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition z-50"
+        class="fixed bottom-6 right-6 bg-[#37654E] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition z-50"
         title="Create Post">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

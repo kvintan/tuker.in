@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -23,6 +24,24 @@ class Community extends Component
             $this->likedPosts[] = $postId;
             $post->increment('likes');
         }
+    }
+
+    public function deletePost($postId)
+    {
+        $post = CommunityPost::findOrFail($postId);
+
+        if ($post->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Hapus gambar dari storage jika ada
+        if ($post->image) {
+            \Storage::disk('public')->delete($post->image);
+        }
+
+        $post->delete();
+
+        session()->flash('success', 'Post berhasil dihapus.');
     }
 
     public function render()
