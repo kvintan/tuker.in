@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommunityPostController;
+use App\Livewire\CheckoutPage;
+use App\Livewire\HistoryDetail;
+use App\Livewire\HistoryPage;
+use App\Livewire\SuccessPage;
 
 Route::get('/', Home::class);
 Route::get('/about', About::class);
@@ -27,18 +31,21 @@ Route::get('/register', Register::class);
 Route::get('/forgot-password', ForgotPassword::class);
 Route::get('/reset-password', ResetPassword::class);
 Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
-Route::get('/product', Product::class);
-Route::get('/product/{slug}', ProductDetail::class);
-Route::get('/auction', Auction::class);
-Route::middleware(['auth'])->group(function () {
-    Route::get('/community', Community::class)->name('community');
-});
 
 // Pages that require login
 Route::middleware(['auth'])->group(function () {
   Route::get('/profile', Profile::class);
   Route::get('/pickup', PickupPage::class);
   Route::get('/cart', Cart::class);
+  Route::get('/checkout', CheckoutPage::class);
+  Route::get('/community', Community::class)->name('community');
+  Route::get('/product', Product::class);
+  Route::get('/product/{slug}', ProductDetail::class);
+  Route::get('/auction', Auction::class);
+  Route::get('/create-post', CreatePost::class)->name('post.create');
+  Route::get('/success', SuccessPage::class)->name('success');
+  Route::get('/history', HistoryPage::class);
+  Route::get('/history/{order_id}', HistoryDetail::class)->name('history.show');
 
   Route::post('/logout', function () {
     Auth::logout();
@@ -47,5 +54,3 @@ Route::middleware(['auth'])->group(function () {
     return redirect('/login')->with('success', 'You have been logged out successfully.');
   })->name('logout');
 });
-
-Route::get('/create-post', CreatePost::class)->name('post.create');

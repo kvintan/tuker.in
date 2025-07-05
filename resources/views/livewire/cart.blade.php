@@ -52,9 +52,11 @@
                 <div class="text-xl font-semibold">
                     Subtotal &nbsp;&nbsp; <span>{{ number_format($grandTotal, 0, ',', '.') }}</span>
                 </div>
-                <button class="bg-[#37654E] hover:bg-[#2a4b3a] text-white font-bold px-6 py-3 rounded-xl mt-4">
-                    Checkout
-                </button>
+                <a href="/checkout" wire:navigate>
+                    <button class="bg-[#37654E] hover:bg-[#2a4b3a] text-white font-bold px-6 py-3 rounded-xl mt-4">
+                        Checkout
+                    </button>
+                </a>
             </div>
         </div>
     </div>
