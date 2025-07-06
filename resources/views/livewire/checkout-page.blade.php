@@ -110,7 +110,30 @@
                             </label>
                             </input>
                         </li>
+                        <li>
+                            <input wire:model='payment_method' class="hidden peer" id="payment-balance"
+                                name="hosting" type="radio" value="Tuker.in Balance" />
+                            <label
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100"
+                                for="payment-balance">
+                                <div class="block">
+                                    <div class="w-full text-lg font-semibold">
+                                        Tuker.in Balance
+                                    </div>
+                                </div>
+                                <svg aria-hidden="true" class="w-5 h-5 ms-3 rtl:rotate-180" fill="none"
+                                    viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </label>
+                        </li>
+
                     </ul>
+
+                    <div class="text-sm mt-2 text-gray-700 font-medium">
+                        Saldo Tuker.in Anda: {{ Number::currency($user_balance, 'IDR') }}
+                    </div>
                 </div>
                 <!-- End Card -->
             </div>
