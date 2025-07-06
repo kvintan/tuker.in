@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
@@ -30,6 +31,17 @@ class Product extends Model
             $slug = Str::slug($product->name) . '-' . $product->id;
             $product->slug = $slug;
             $product->saveQuietly();
+        });
+
+        // Set nilai default sebelum create
+        static::creating(function ($product) {
+            if (is_null($product->starting_bid)) {
+                $product->starting_bid = 1000;
+            }
+
+            if (is_null($product->auction_end_time)) {
+                $product->auction_end_time = Carbon::now()->addMinutes(5);
+            }
         });
     }
 

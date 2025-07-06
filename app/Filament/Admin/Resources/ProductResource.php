@@ -80,13 +80,27 @@ class ProductResource extends Resource
                         TextInput::make('price')
                             ->numeric()
                             ->required()
+                            ->prefix('IDR'),
+
+                        // Starting Bid Manual Input
+                        TextInput::make('starting_bid')
+                            ->numeric()
+                            ->label('Starting Bid')
+                            ->default(1000)
                             ->prefix('IDR')
                     ]),
+
+                    
 
                     Section::make('Status')->schema([
                         Toggle::make('in_stock')
                             ->required()
-                            ->default(true)
+                            ->default(true),
+
+                        // Manual Input Auction End Time
+                        Forms\Components\DateTimePicker::make('auction_end_time')
+                            ->label('Auction End Time')
+                            ->default(now()->addMinutes(5))
                     ])
                 ])->columnSpan(1),
 
