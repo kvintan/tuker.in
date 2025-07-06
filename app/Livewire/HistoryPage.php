@@ -15,8 +15,9 @@ class HistoryPage extends Component
 {
     use WithPagination;
 
-    #[Url()]
-    public $filter = 'product'; // default langsung ke product orders
+    #[Url(keep: true)]
+    public $filter = 'product';
+
 
     public function updatingFilter()
     {

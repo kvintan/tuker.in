@@ -1,6 +1,6 @@
 <div class="w-full max-w-[85rem] h-[70vh] lg:h-[90vh] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-4xl font-bold text-slate-500">My Orders {{ $filter }}</h1>
+        <h1 class="text-4xl font-bold text-slate-500">My Orders</h1>
         <select wire:model="filter"
             class="border-gray-300 text-sm rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500">
             <option value="product">Product Orders</option>
@@ -9,7 +9,7 @@
 
     </div>
     <div class="flex flex-col bg-white p-5 rounded mt-4 shadow-lg"
-        wire:key="orders-{{ $isAuction ? 'auction' : 'product' }}">
+        wire:key="orders-{{ $filter }}-{{ now() }}">
         <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
