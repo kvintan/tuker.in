@@ -118,6 +118,23 @@
         </div>
         <!-- End Card -->
 
+        <!-- ✅ Card: Shipping Status -->
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl">
+            <div class="p-4 md:p-5 flex gap-x-4">
+                <div class="flex-shrink-0 flex justify-center items-center w-12 h-12 bg-gray-100 rounded-lg">
+                    <img src="{{ asset('images/shipping-icon.png') }}" alt="Shipping Icon" class="w-6 h-6">
+                </div>
+                <div class="grow">
+                    <p class="text-xs uppercase tracking-wide text-gray-500">Shipping Status</p>
+                    <h3 class="text-xl font-medium text-gray-800">
+                        {{ ucfirst($order->status) }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Card -->
+
+
     </div>
     <!-- End Grid -->
 
