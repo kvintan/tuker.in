@@ -22,6 +22,7 @@ class Product extends Model
 
     protected $casts = [
     'image_path' => 'array',
+    'auction_end_time' => 'datetime',
     ];
 
 
@@ -55,5 +56,10 @@ class Product extends Model
 
     public function highestBid() {
         return $this->hasOne(Bids::class)->latestOfMany();
+    }
+
+    public function getCurrentBidAttribute()
+    {
+        return $this->bids()->max('bid_amount') ?? $this->starting_bid;
     }
 }
