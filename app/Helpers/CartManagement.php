@@ -116,4 +116,11 @@ class CartManagement {
   public static function calculateGrandTotal($items) {
     return array_sum(array_column($items, 'total_amount'));
   }
+
+  public static function getTotalCartItemsCount()
+  {
+      $cart_items = self::getCartItemsFromCookie();
+      return array_sum(array_column($cart_items, 'quantity'));
+  }
+
 }
