@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('is_auction')->default(true);
             $table->integer('starting_bid')->nullable();
             $table->timestamp('auction_end_time')->nullable();
-            $table->string('image_path')->nullable();
+            $table->json('image_path')->nullable();
             $table->timestamps();
             $table->string('slug')->unique()->nullable();
             $table->boolean('in_stock')->default(true);

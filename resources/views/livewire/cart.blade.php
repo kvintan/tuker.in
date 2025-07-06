@@ -10,7 +10,7 @@
             @php $key = 'cart-' . $item['product_id']; @endphp
             <div class="border-b pb-4 flex items-center gap-4 w-full">
                 <div class="w-20 h-20">
-                    <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}"
+                    <img src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['name'] }}"
                         class="w-full h-full object-cover border rounded-2xl" />
                 </div>
 

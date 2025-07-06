@@ -61,13 +61,17 @@ class ProductResource extends Resource
                             ->fileAttachmentsDirectory('products')
                     ])->columns(2),
 
-                    Section::make('Images')->schema([
-                        FileUpload::make('images')
+                    Section::make('Product Images')->schema([
+                        FileUpload::make('image_path') // tetap pakai nama kolom image_path
+                            ->label('Product Images')
                             ->multiple()
+                            ->reorderable()
+                            ->image()
                             ->directory('products')
-                            ->maxFiles(5)
-                            ->reorderable(),
+                            ->preserveFilenames()
+                            ->required()
                     ])
+
                 ])->columnSpan(2),
 
 

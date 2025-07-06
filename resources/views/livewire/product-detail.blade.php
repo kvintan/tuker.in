@@ -1,7 +1,8 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
     <div class="flex flex-row">
-        <img src="{{ asset($product->image_path) }}" alt="Product Image" class="ml-[2vw] mt-[5vh] w-[30vw] h-[70vh]">
+        <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}"
+            class="ml-[2vw] mt-[5vh] w-[30vw] h-[70vh]">
         <div class="ml-[5vw] mt-[9vh]">
             <h1 class="font-inter text-[3vw] font-bold">{{ $product->name }}</h1>
             <p class="text-[#37654E] mt-[1vh] text-[1.5vw] mb-4 font-inter">IDR

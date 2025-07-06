@@ -19,6 +19,11 @@ class Product extends Model
         'in_stock'
     ];
 
+    protected $casts = [
+    'image_path' => 'array',
+    ];
+
+
     protected static function booted()
     {
         static::created(function ($product) {

@@ -7,7 +7,7 @@
         @foreach ($products as $product)
             <a href="/product/{{ $product->slug }}">
                 <div class="flex flex-col items-center mb-10">
-                    <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
+                    <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}">
                     <div class="text-center">
                         <h2 class="text-xl font-inter font-bold text-black mb-2 hover:underline">{{ $product->name }}
                         </h2>
