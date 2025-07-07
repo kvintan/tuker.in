@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/history', HistoryPage::class);
   Route::get('/history/{order_id}', HistoryDetail::class)->name('history.show');
   Route::get('/auction/{product}', AuctionDetail::class)->name('auction.detail');
+  Route::get('/profile', Profile::class);
 
 
   Route::post('/logout', function () {
