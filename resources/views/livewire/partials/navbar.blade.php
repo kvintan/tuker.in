@@ -79,23 +79,28 @@
 
                     <div class="relative">
                         <button type="button" @click="isOpen = !isOpen"
-                            class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+                            class="flex max-w-xs items-center rounded-full  text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
                             id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="User avatar" />
+                            <span
+                                class="text-black bg-transparent text-sm font-bold font-inter ml-[0.5vw]">{{ Auth::user()->name }}</span>
+                            <svg class="w-4 h-4 ml-1 bg-transparent" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
 
                         <div x-show="isOpen" x-transition @click.away="isOpen = false"
                             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 font-inter hover:bg-gray-100">Your
                                 Profile</a>
-                            <a href="/history" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">History</a>
+                            <a href="/history"
+                                class="block px-4 py-2 text-sm text-gray-700 font-inter hover:bg-gray-100">History</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-inter w-full text-left">
                                     Sign out
                                 </button>
                             </form>
