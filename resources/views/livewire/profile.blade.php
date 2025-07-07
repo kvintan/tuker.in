@@ -1,6 +1,7 @@
 <div class="min-h-screen px-10 py-14">
     <div class="flex flex-col lg:flex-row gap-8">
-        <!-- Sidebar -->
+
+        {{-- Sidebar --}}
         <div class="flex flex-col items-center gap-6 w-full lg:w-1/4">
             <div class="relative">
                 @if ($profile_image)
@@ -33,18 +34,21 @@
                     </div>
                 </div>
 
-                <button
+                <button wire:click="$set('showTopUpModal', true)"
                     class="w-full bg-[#37654E] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#2d523f] transition duration-150">
                     Top up
                 </button>
+
                 <hr>
-                <div class="text-sm text-center text-gray-700 font-medium hover:underline cursor-pointer">
-                    History
-                </div>
+                <a href="/history">
+                    <div class="text-sm text-center text-gray-700 font-medium hover:underline cursor-pointer">
+                        History
+                    </div>
+                </a>
             </div>
         </div>
 
-        <!-- Main Profile -->
+        {{-- Main Content --}}
         <div class="w-full lg:w-3/4">
             <div class="w-full bg-white p-8 rounded-xl shadow-md space-y-8">
                 <h1 class="text-2xl font-bold text-gray-800">Profile</h1>
@@ -55,18 +59,15 @@
                             <label class="font-semibold block">Name</label>
                             <input type="text" wire:model.defer="name" class="w-full border rounded px-4 py-2">
                         </div>
-
                         <div>
                             <label class="font-semibold block">Phone</label>
                             <input type="text" wire:model.defer="phone_number"
                                 class="w-full border rounded px-4 py-2">
                         </div>
-
                         <div>
                             <label class="font-semibold block">Address</label>
                             <textarea wire:model.defer="address" class="w-full border rounded px-4 py-2"></textarea>
                         </div>
-
                         <div>
                             <label class="font-semibold block">Upload Photo</label>
                             <input type="file" wire:model="new_profile_image">
@@ -114,4 +115,35 @@
             </div>
         </div>
     </div>
+
+    {{-- Top Up Modal --}}
+    @if ($showTopUpModal)
+        <div class="fixed inset-0 bg-black bg-opacity-40 z-40 flex items-center justify-center">
+            <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg space-y-4">
+                <h2 class="text-xl font-semibold text-gray-800">Top Up Wallet</h2>
+
+                <form wire:submit.prevent="redirectToStripe" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Amount (Rp)</label>
+                        <input type="number" wire:model="top_up_amount" min="1000"
+                            class="w-full mt-1 border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600">
+                    </div>
+
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button type="submit"
+                            class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700 transition">Proceed</button>
+                        <button type="button" wire:click="$set('showTopUpModal', false)"
+                            class="text-gray-500 hover:underline">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endif
+
 </div>
+
+<script>
+    window.addEventListener('redirect-to-stripe', event => {
+        window.location.href = event.detail.url;
+    });
+</script>
