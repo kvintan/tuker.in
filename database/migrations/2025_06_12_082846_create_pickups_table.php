@@ -14,12 +14,21 @@ return new class extends Migration
         Schema::create('pickups', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+
+            // Data tambahan
+            $table->string('name');         
+            $table->string('phone_number');   
+            $table->string('address');        
             $table->date('pickup_date')->nullable();
-            $table->float('weight');
-            $table->decimal('price', 10, 2);
-            $table->string('type');
-            $table->string('address');
-            $table->boolean('is_accept')->default(null)->nullable();
+
+            // Data sampah
+            $table->string('type');          
+            $table->float('weight');          
+            $table->decimal('price', 10, 2); 
+
+            // Status proses
+            $table->string('alasan_penolakan')->nullable();
+            $table->enum('status', ['pending', 'diterima', 'ditolak'])->default('pending');
             $table->timestamps();
         });
     }

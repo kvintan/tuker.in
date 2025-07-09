@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('password');
             $table->decimal('balance', 15, 2)->default(0);
+
+            // ✅ Role field: user / mitra / admin
+            $table->enum('role', ['user', 'mitra', 'admin'])->default('user')->index();
+
             $table->rememberToken();
             $table->timestamps();
         });

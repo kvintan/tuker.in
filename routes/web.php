@@ -17,10 +17,13 @@ use App\Livewire\AuctionDetail;
 use App\Livewire\Auth\Register;
 use App\Livewire\HistoryDetail;
 use App\Livewire\ProductDetail;
+use App\Livewire\MitraDashboard;
 use App\Livewire\Auth\ResetPassword;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\PengambilanSampahMitra;
+use App\Livewire\HistoryPengambilanMitra;
 use App\Http\Controllers\CommunityPostController;
 
 Route::get('/', Home::class);
@@ -58,3 +61,9 @@ Route::middleware(['auth'])->group(function () {
     return redirect('/login')->with('success', 'You have been logged out successfully.');
   })->name('logout');
 });
+
+Route::get('/mitra/pengambilan', PengambilanSampahMitra::class)->name('mitra.pengambilan');
+
+Route::get('/mitra/history', HistoryPengambilanMitra::class)->name('mitra.history');
+
+Route::get('/mitra/dashboard', MitraDashboard::class)->name('mitra.dashboard');
