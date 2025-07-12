@@ -1,150 +1,108 @@
-<div class="w-full max-w-[85rem] h-[70vh] lg:h-[90vh] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-    <div class="flex items-center justify-between mb-4">
-        <h1 class="text-4xl font-bold text-slate-500">My Orders</h1>
+<div class="p-8 min-h-screen bg-gradient-to-br">
+    <div class="mb-8 flex items-center justify-between">
+        <h1 class="text-4xl font-extrabold text-gray-800">My Orders</h1>
         <select wire:model="filter"
-            class="border-gray-300 text-sm rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500">
+            class="border border-gray-300 text-sm rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500 px-3 py-2">
             <option value="product">Product Orders</option>
             <option value="auction">Auction Orders</option>
             <option value="pickup">Pickup Requests</option>
         </select>
     </div>
 
-    <div class="flex flex-col bg-white p-5 rounded mt-4 shadow-lg"
-        wire:key="orders-{{ $filter }}-{{ now() }}">
-        <div class="-m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="overflow-hidden">
-                    @if ($isPickup)
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-900 text-white text-xs uppercase">
-                                <tr>
-                                    <th class="px-6 py-3 text-left">♻️ Jenis Sampah</th>
-                                    <th class="px-6 py-3 text-left">📦 Berat (KG)</th>
-                                    <th class="px-6 py-3 text-left">📅 Tanggal Penjemputan</th>
-                                    <th class="px-6 py-3 text-left">📍 Alamat</th>
-                                    <th class="px-6 py-3 text-left">📌 Status</th>
-                                    <th class="px-6 py-3 text-left">📝 Alasan Penolakan</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                @forelse ($orders as $pickup)
-                                    <tr class="odd:bg-white even:bg-gray-100">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                                            {{ $pickup->type }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                            {{ $pickup->weight }} kg
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                            {{ $pickup->pickup_date ?? '-' }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                            {{ $pickup->address }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                            @if ($pickup->status === 'ditolak')
-                                                <span
-                                                    class="inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
-                                                    ❌ Ditolak
-                                                </span>
-                                            @elseif ($pickup->status === 'diterima')
-                                                <span
-                                                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
-                                                    ✅ Diterima
-                                                </span>
-                                            @else
-                                                <span
-                                                    class="inline-flex items-center gap-1 bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">
-                                                    ⏳ Pending
-                                                </span>
-                                            @endif
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 italic">
-                                            {{ $pickup->alasan_penolakan ?? '-' }}
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="6" class="text-center text-gray-400 py-6">No History of Pickup
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    @else
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-900 text-white text-xs uppercase">
-                                <tr>
-                                    <th class="px-6 py-3 text-left">🆔 Order</th>
-                                    <th class="px-6 py-3 text-left">📅 Date</th>
-                                    <th class="px-6 py-3 text-left">💰 Order Amount</th>
-                                    <th class="px-6 py-3 text-end">🎯 Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- Auction Orders --}}
-                                @if ($isAuction)
-                                    @forelse ($orders as $product)
-                                        <tr class="odd:bg-white even:bg-gray-100">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                                                {{ $product->id }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                {{ $product->updated_at->format('d-m-Y') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                {{ Number::currency($product->current_bid, 'IDR') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                                <a href="{{ route('auction.detail', $product->id) }}"
-                                                    class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">
-                                                    View Details
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center text-gray-400 py-6">
-                                                No History of Auction
-                                            </td>
-                                        </tr>
-                                    @endforelse
+    <div class="overflow-x-auto bg-white rounded-xl shadow-xl">
+        <table class="min-w-full text-sm text-gray-700">
+            <thead class="bg-gray-900 text-white text-xs uppercase">
+                @if($isPickup)
+                    <tr>
+                        <th class="px-6 py-3 text-left">Jenis Sampah</th>
+                        <th class="px-6 py-3 text-center">Berat (KG)</th>
+                        <th class="px-6 py-3 text-center">Tanggal Penjemputan</th>
+                        <th class="px-6 py-3 text-left">Alamat</th>
+                        <th class="px-6 py-3 text-center">Status</th>
+                        <th class="px-6 py-3 text-left">Alasan Penolakan</th>
+                    </tr>
+                @elseif($isAuction)
+                    <tr>
+                        <th class="px-6 py-3 text-left">ID Lelang</th>
+                        <th class="px-6 py-3 text-center">Tanggal</th>
+                        <th class="px-6 py-3 text-center">Penawaran Saat Ini</th>
+                        <th class="px-6 py-3 text-center">Aksi</th>
+                    </tr>
+                @else
+                    <tr>
+                        <th class="px-6 py-3 text-left">ID Order</th>
+                        <th class="px-6 py-3 text-center">Tanggal</th>
+                        <th class="px-6 py-3 text-center">Total</th>
+                        <th class="px-6 py-3 text-center">Aksi</th>
+                    </tr>
+                @endif
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+                {{-- Pickup --}}
+                @if($isPickup)
+                    @forelse($orders as $pickup)
+                        <tr class="hover:bg-yellow-50 transition">
+                            <td class="px-6 py-4 font-medium">{{ $pickup->type }}</td>
+                            <td class="px-6 py-4 text-center">{{ $pickup->weight }} kg</td>
+                            <td class="px-6 py-4 text-center">{{ $pickup->pickup_date ?? '-' }}</td>
+                            <td class="px-6 py-4">{{ $pickup->address }}</td>
+                            <td class="px-6 py-4 text-center">
+                                @if($pickup->status === 'diterima')
+                                    <span class="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">✅ Diterima</span>
+                                @elseif($pickup->status === 'ditolak')
+                                    <span class="inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">❌ Ditolak</span>
                                 @else
-                                    {{-- Product Orders --}}
-                                    @forelse ($orders as $order)
-                                        <tr wire:key='{{ $order->id }}' class="odd:bg-white even:bg-gray-100">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                                                {{ $order->id }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                {{ $order->created_at->format('d-m-Y') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                {{ Number::currency($order->grand_total, 'IDR') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                                <a wire:navigate href="history/{{ $order->id }}"
-                                                    class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">
-                                                    View Details
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center text-gray-400 py-6">
-                                                No History of Products
-                                            </td>
-                                        </tr>
-                                    @endforelse
+                                    <span class="inline-flex items-center gap-1 bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">⏳ Pending</span>
                                 @endif
-                            </tbody>
+                            </td>
+                            <td class="px-6 py-4 italic text-gray-600">{{ $pickup->alasan_penolakan ?? '-' }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="6" class="text-center text-gray-400 py-6">Belum ada pickup request</td></tr>
+                    @endforelse
 
-                        </table>
+                {{-- Auction --}}
+                @elseif($isAuction)
+                    @forelse($orders as $auction)
+                        <tr class="hover:bg-yellow-50 transition">
+                            <td class="px-6 py-4 font-medium">{{ $auction->id }}</td>
+                            <td class="px-6 py-4 text-center">{{ $auction->updated_at->format('d-m-Y') }}</td>
+                            <td class="px-6 py-4 text-center">{{ Number::currency($auction->current_bid, 'IDR') }}</td>
+                            <td class="px-6 py-4 text-center">
+                                <a href="{{ route('auction.detail', $auction->id) }}"
+                                    class="bg-slate-600 hover:bg-slate-500 text-white text-xs px-4 py-2 rounded-md shadow">
+                                    Lihat Detail
+                                </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="4" class="text-center text-gray-400 py-6">Belum ada order lelang</td></tr>
+                    @endforelse
 
-                    @endif
-                </div>
-            </div>
-            {{ $orders->links() }}
-        </div>
+                {{-- Product --}}
+                @else
+                    @forelse($orders as $order)
+                        <tr class="hover:bg-yellow-50 transition">
+                            <td class="px-6 py-4 font-medium">{{ $order->id }}</td>
+                            <td class="px-6 py-4 text-center">{{ $order->created_at->format('d-m-Y') }}</td>
+                            <td class="px-6 py-4 text-center">{{ Number::currency($order->grand_total, 'IDR') }}</td>
+                            <td class="px-6 py-4 text-center">
+                                <a wire:navigate href="history/{{ $order->id }}"
+                                    class="bg-slate-600 hover:bg-slate-500 text-white text-xs px-4 py-2 rounded-md shadow">
+                                    Lihat Detail
+                                </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="4" class="text-center text-gray-400 py-6">Belum ada order produk</td></tr>
+                    @endforelse
+                @endif
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-6">
+        {{ $orders->links() }}
     </div>
 </div>
