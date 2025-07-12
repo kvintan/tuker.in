@@ -14,6 +14,7 @@ class MitraDashboard extends Component
     public $totalDitolak = 0;
     public $totalKg = 0;
     public $latestPengambilan = [];
+    public $totalPembelian = 0;
 
     public function mount()
     {
@@ -32,20 +33,37 @@ class MitraDashboard extends Component
     }
 
     public function hitungStatistik()
-{
-    // Ambil semua data dari tabel pickups
-    $baseQuery = Pickup::query();
+    {
+        // Ambil semua data dari tabel pickups
+        $baseQuery = Pickup::query();
 
-    if (!empty($this->filterKategori)) {
-        $baseQuery->where('type', $this->filterKategori);
+        if (!empty($this->filterKategori)) {
+            $baseQuery->where('type', $this->filterKategori);
+        }
+
+        $this->totalDiterima = (clone $baseQuery)->where('status', 'diterima')->count();
+        $this->totalDitolak  = (clone $baseQuery)->where('status', 'ditolak')->count();
+        $this->totalKg       = (clone $baseQuery)->where('status', 'diterima')->sum('weight');
+
+        $this->latestPengambilan = (clone $baseQuery)->latest()->take(5)->get();
+
+        $this->totalPembelian = (clone $baseQuery)
+        ->where('status', 'diterima')
+        ->get()
+        ->sum(function ($item) {
+            return $item->weight * $this->getHargaPerKg($item->type);
+        });
     }
 
-    $this->totalDiterima = (clone $baseQuery)->where('status', 'diterima')->count();
-    $this->totalDitolak  = (clone $baseQuery)->where('status', 'ditolak')->count();
-    $this->totalKg       = (clone $baseQuery)->where('status', 'diterima')->sum('weight');
+    public function getHargaPerKg($type)
+    {
+        return match (strtolower($type)) {
+            'plastic', 'paper', 'elektronik' => 5000,
+            'metal' => 3500,
+            default => 0,
+        };
+    }
 
-    $this->latestPengambilan = (clone $baseQuery)->latest()->take(5)->get();
-}
 
 
     public function render()
