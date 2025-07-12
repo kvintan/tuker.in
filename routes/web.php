@@ -64,6 +64,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/mitra/pengambilan', PengambilanSampahMitra::class)->name('mitra.pengambilan');
 
-Route::get('/mitra/history', HistoryPengambilanMitra::class)->name('mitra.history');
+Route::get('/pickup/history', HistoryPengambilanMitra::class)->name('mitra.history');
 
 Route::get('/mitra/dashboard', MitraDashboard::class)->name('mitra.dashboard');

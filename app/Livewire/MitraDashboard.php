@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\PengambilanSampah;
+use App\Models\Pickup;
 
 class MitraDashboard extends Component
 {
@@ -18,7 +18,7 @@ class MitraDashboard extends Component
     public function mount()
     {
         // Ambil daftar kategori unik (opsional bisa dibatasi ke mitra_id saat ini)
-        $this->kategoriList = PengambilanSampah::select('jenis')->distinct()->pluck('jenis')->toArray();
+        $this->kategoriList = Pickup::select('type')->distinct()->pluck('type')->toArray();
         $this->hitungStatistik();
     }
 
@@ -28,20 +28,21 @@ class MitraDashboard extends Component
     }
 
     public function hitungStatistik()
-    {
-        $baseQuery = PengambilanSampah::where('mitra_id', auth()->id());
+{
+    // Ambil semua data dari tabel pickups
+    $baseQuery = Pickup::query();
 
-        if (!empty($this->filterKategori)) {
-            $baseQuery->where('jenis', $this->filterKategori);
-        }
-
-        // clone bisa diganti dengan build ulang query untuk menghindari error
-        $this->totalDiterima = (clone $baseQuery)->where('status', 'diterima')->count();
-        $this->totalDitolak  = (clone $baseQuery)->where('status', 'ditolak')->count();
-        $this->totalKg       = (clone $baseQuery)->where('status', 'diterima')->sum('jumlah');
-
-        $this->latestPengambilan = (clone $baseQuery)->latest()->take(5)->get();
+    if (!empty($this->filterKategori)) {
+        $baseQuery->where('type', $this->filterKategori);
     }
+
+    $this->totalDiterima = (clone $baseQuery)->where('status', 'diterima')->count();
+    $this->totalDitolak  = (clone $baseQuery)->where('status', 'ditolak')->count();
+    $this->totalKg       = (clone $baseQuery)->where('status', 'diterima')->sum('weight');
+
+    $this->latestPengambilan = (clone $baseQuery)->latest()->take(5)->get();
+}
+
 
     public function render()
     {
