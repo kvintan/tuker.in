@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use App\Models\Pickup;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\Attributes\Url;
@@ -36,15 +37,33 @@ class HistoryPage extends Component
                 })
                 ->latest()
                 ->paginate(5);
+
+            $isAuction = true;
+            $isPickup = false;
+
+        } elseif ($this->filter === 'pickup') {
+            $orders = Pickup::with('user')
+                ->where('user_id', $userId)
+                ->whereIn('status', ['diterima', 'ditolak'])
+                ->latest()
+                ->paginate(5);
+
+            $isAuction = false;
+            $isPickup = true;
+
         } else {
             $orders = Order::where('user_id', $userId)
                 ->latest()
                 ->paginate(5);
+
+            $isAuction = false;
+            $isPickup = false;
         }
 
         return view('livewire.history-page', [
             'orders' => $orders,
-            'isAuction' => $this->filter === 'auction',
+            'isAuction' => $isAuction,
+            'isPickup' => $isPickup,
         ]);
     }
 }
