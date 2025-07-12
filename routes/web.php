@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\PengambilanSampahMitra;
 use App\Livewire\HistoryPengambilanMitra;
 use App\Http\Controllers\CommunityPostController;
+use App\Models\PengambilanSampah;
+use Livewire\Livewire;
 
 Route::get('/', Home::class);
 Route::get('/about', About::class);
@@ -60,10 +62,7 @@ Route::middleware(['auth'])->group(function () {
     request()->session()->regenerateToken();
     return redirect('/login')->with('success', 'You have been logged out successfully.');
   })->name('logout');
+
+    Route::get('/mitra/pengambilan', PengambilanSampahMitra::class)->name('mitra.pengambilan');
+    Route::get('/mitra/dashboard', MitraDashboard::class)->name('mitra.dashboard');
 });
-
-Route::get('/mitra/pengambilan', PengambilanSampahMitra::class)->name('mitra.pengambilan');
-
-Route::get('/pickup/history', HistoryPengambilanMitra::class)->name('mitra.history');
-
-Route::get('/mitra/dashboard', MitraDashboard::class)->name('mitra.dashboard');

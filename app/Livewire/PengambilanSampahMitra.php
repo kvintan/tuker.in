@@ -2,17 +2,24 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Pickup;
+use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class PengambilanSampahMitra extends Component
 {
     public $pengambilans;
     public $formPenolakan = false;
     public $selectedId, $alasanTolak, $konfirmasiTolak = false;
+    
 
     public function mount()
     {
+        $user = Auth::user();
+        if ($user?->email !== 'mitra@gmail.com') {
+            abort(403, 'Unauthorized');
+        }
+
         $this->loadData();
     }
 
@@ -32,7 +39,6 @@ class PengambilanSampahMitra extends Component
 
         $item->update([
             'status' => "diterima",
-            'approved_by' => auth()->id(), // opsional, kalau kamu punya kolom approved_by
         ]);
 
         // Tambah saldo user berdasarkan jenis sampah
@@ -72,7 +78,6 @@ class PengambilanSampahMitra extends Component
         $item->update([
             'status' => "ditolak",
             'alasan_penolakan' => $this->alasanTolak,
-            'approved_by' => auth()->id(), // opsional
         ]);
 
         $this->reset(['alasanTolak', 'selectedId', 'formPenolakan', 'konfirmasiTolak']);

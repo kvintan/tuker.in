@@ -20,6 +20,10 @@ class MitraDashboard extends Component
         // Ambil daftar kategori unik (opsional bisa dibatasi ke mitra_id saat ini)
         $this->kategoriList = Pickup::select('type')->distinct()->pluck('type')->toArray();
         $this->hitungStatistik();
+
+        if (auth()->user()?->email !== 'mitra@gmail.com') {
+        abort(403, 'Unauthorized');
+    }
     }
 
     public function updatedFilterKategori()
