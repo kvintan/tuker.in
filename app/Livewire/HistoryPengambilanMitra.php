@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class HistoryPengambilanMitra extends Component
 {
-    public $histories = [];
+    public $histories;
 
     public function mount()
     {
-        $this->histories = Pickup::with('user')
+        $this->histories = Pickup::where('user_id', Auth::id())
             ->whereIn('status', ['diterima', 'ditolak'])
             ->orderByDesc('updated_at')
             ->get();

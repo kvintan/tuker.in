@@ -53,7 +53,6 @@
         <div class="flex flex-col bg-white border shadow-sm rounded-xl">
             <div class="p-4 md:p-5 flex gap-x-4">
                 <div class="flex-shrink-0 flex justify-center items-center w-12 h-12 bg-gray-100 rounded-lg">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502.685 502.685" xml:space="preserve">
@@ -153,25 +152,27 @@
                     <tbody>
 
                         @foreach ($order_items as $item)
-                            <tr wire:key="{{ $item->id }}">
-                                <td class="py-4">
-                                    <div class="flex items-center">
-                                        <img class="w-[4vw]"
-                                            src="{{ isset($item->product->image_path[0]) ? asset('storage/' . $item->product->image_path[0]) : asset('images/default.png') }}"
-                                            alt="{{ $item->product->name }}">
-                                        <span
-                                            class="text-[2vw] sm:ml-[0vw] ml-[-4vw] font-semibold sm:text-[1.2vw]">{{ $item->product->name }}</span>
-                                    </div>
-                                </td>
-                                <td class="text-[3vw] py-4 sm:text-[1.2vw]">
-                                    {{ Number::currency($item->unit_amount, 'IDR') }}</td>
-                                <td class="py-4">
+                        <tr wire:key="{{ $item->id }}">
+                            <td class="py-4">
+                                <div class="flex items-center">
+                                    <img class="w-[4vw]"
+                                        src="{{ isset($item->product->image_path[0]) ? asset('storage/' . $item->product->image_path[0]) : asset('images/default.png') }}"
+                                        alt="{{ $item->product->name }}">
                                     <span
-                                        class="text-[3vw] sm:ml-[3.5vw] sm:text-[1.2vw] ml-[7vw] text-center w-8">{{ $item->quantity }}</span>
-                                </td>
-                                <td class="py-4 text-[3vw] sm:text-[1.2vw]">
-                                    {{ Number::currency($item->unit_amount, 'IDR') }}</td>
-                            </tr>
+                                        class="text-[2vw] sm:ml-[0vw] ml-[-4vw] font-semibold sm:text-[1.2vw]">{{ $item->product->name }}</span>
+                                </div>
+                            </td>
+                            <td class="text-[3vw] py-4 sm:text-[1.2vw]">
+                                {{ Number::currency($item->unit_amount, 'IDR') }}
+                            </td>
+                            <td class="py-4">
+                                <span
+                                    class="text-[3vw] sm:ml-[3.5vw] sm:text-[1.2vw] ml-[7vw] text-center w-8">{{ $item->quantity }}</span>
+                            </td>
+                            <td class="py-4 text-[3vw] sm:text-[1.2vw]">
+                                {{ Number::currency($item->unit_amount, 'IDR') }}
+                            </td>
+                        </tr>
                         @endforeach
 
                         <!--[if ENDBLOCK]><![endif]-->
@@ -186,7 +187,7 @@
                 <h2 class="text-lg font-semibold mb-4">Summary</h2>
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>
-                    <span>{{ Number::currency($item->order->grand_total, 'IDR') }}</span>
+                    <span>{{ Number::currency($order->grand_total, 'IDR') }}</span>
                 </div>
                 <div class="flex justify-between mb-2">
                     <span>Taxes</span>
