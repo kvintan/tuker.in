@@ -65,7 +65,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center text-gray-400 py-6">Belum ada data pickup
+                                        <td colspan="6" class="text-center text-gray-400 py-6">No History of Pickup
                                         </td>
                                     </tr>
                                 @endforelse
@@ -84,7 +84,7 @@
                             <tbody>
                                 {{-- Auction Orders --}}
                                 @if ($isAuction)
-                                    @foreach ($orders as $product)
+                                    @forelse ($orders as $product)
                                         <tr class="odd:bg-white even:bg-gray-100">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                                                 {{ $product->id }}
@@ -102,10 +102,16 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center text-gray-400 py-6">
+                                                No History of Auction
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                 @else
                                     {{-- Product Orders --}}
-                                    @foreach ($orders as $order)
+                                    @forelse ($orders as $order)
                                         <tr wire:key='{{ $order->id }}' class="odd:bg-white even:bg-gray-100">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                                                 {{ $order->id }}
@@ -123,9 +129,16 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center text-gray-400 py-6">
+                                                No History of Products
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                 @endif
                             </tbody>
+
                         </table>
 
                     @endif
