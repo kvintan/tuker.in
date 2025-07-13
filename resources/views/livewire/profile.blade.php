@@ -1,4 +1,19 @@
 <div class="min-h-screen px-10 py-14">
+    @if (session()->has('error'))
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+            class="mb-6 p-4 rounded-lg bg-red-100 text-red-800 border border-red-300 transition-all">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if (session()->has('success'))
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+            class="mb-6 p-4 rounded-lg bg-green-100 text-green-800 border border-green-300 transition-all">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
     <div class="flex flex-col lg:flex-row gap-8">
 
         {{-- Sidebar --}}
