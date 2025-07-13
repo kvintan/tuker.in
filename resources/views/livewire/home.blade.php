@@ -1,4 +1,11 @@
     <div>
+        @if (session()->has('message'))
+            <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+                class="mb-4 p-4 rounded-lg bg-green-100 text-green-800 border border-green-300 shadow transition-all">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <!-- Text Content -->
         <div class="md:w-1/2 mb-10 md:mb-0">
             <h1 class="font-inter font-extrabold text-4xl md:text-6xl leading-tight mb-6 mt-[20vh]">
