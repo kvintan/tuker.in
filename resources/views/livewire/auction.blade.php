@@ -1,4 +1,5 @@
 <div wire:poll.5s>
+
     <div class="min-h-screen flex flex-col items-center py-12 px-4">
         <img src="{{ asset('images/imgAuction.png') }}" alt="Auction Banner" class="w-full object-cover rounded-xl mb-8">
         <h1 class="text-4xl font-bold font-inter text-gray-800 mb-4">Auction</h1>
