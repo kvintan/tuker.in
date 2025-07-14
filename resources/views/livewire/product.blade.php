@@ -3,15 +3,18 @@
     <h1 class="font-inter font-extrabold text-6xl">Product</h1>
 
     <!-- card product -->
-    <div class="grid grid-cols-4 mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
         @foreach ($products as $product)
             <a href="/product/{{ $product->slug }}">
-                <div class="flex flex-col items-center mb-10">
-                    <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}">
+                <div
+                    class="bg-white shadow-md rounded-2xl overflow-hidden p-4 w-full border-2 border-black flex flex-col items-center hover:shadow-lg transition min-h-[400px]">
+                    <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}"
+                        class="w-full h-[35vh] object-cover rounded-xl mb-4">
+
                     <div class="text-center">
                         <h2 class="text-xl font-inter font-bold text-black mb-2 hover:underline">{{ $product->name }}
                         </h2>
-                        <p class="text-black mb-4 font-inter">IDR {{ number_format($product->price, 0, ',', '.') }}</p>
+                        <p class="text-black mb-1 font-inter">IDR {{ number_format($product->price, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </a>
