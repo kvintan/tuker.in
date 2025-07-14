@@ -52,7 +52,7 @@
                         </template>
 
                         <template x-if="countdown <= 0">
-                            <p class="text-red-600 font-semibold">Auction Ended</p>
+                            <p class="text-red-600 font-semibold ml-[5.5vw]">Auction Ended</p>
                         </template>
                     </div>
 
