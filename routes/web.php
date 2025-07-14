@@ -63,6 +63,6 @@ Route::middleware(['auth'])->group(function () {
     return redirect('/login')->with('success', 'You have been logged out successfully.');
   })->name('logout');
 
-    Route::get('/mitra/pengambilan', PengambilanSampahMitra::class)->name('mitra.pengambilan');
+    Route::get('/mitra/pickup', PengambilanSampahMitra::class)->name('mitra.pengambilan');
     Route::get('/mitra/dashboard', MitraDashboard::class)->name('mitra.dashboard');
 });

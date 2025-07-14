@@ -97,6 +97,12 @@
                                 Profile</a>
                             <a href="/history"
                                 class="block px-4 py-2 text-sm text-gray-700 font-inter hover:bg-gray-100">History</a>
+                            @if (Auth::user()->email === 'mitra@gmail.com')
+                                <a href="/mitra/pickup"
+                                    class="block px-4 py-2 text-sm text-gray-700 font-inter hover:bg-gray-100">Pickup</a>
+                                <a href="/mitra/dashboard"
+                                    class="block px-4 py-2 text-sm text-gray-700 font-inter hover:bg-gray-100">Dashboard</a>
+                            @endif
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
