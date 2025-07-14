@@ -152,27 +152,27 @@
                     <tbody>
 
                         @foreach ($order_items as $item)
-                        <tr wire:key="{{ $item->id }}">
-                            <td class="py-4">
-                                <div class="flex items-center">
-                                    <img class="w-[4vw]"
-                                        src="{{ isset($item->product->image_path[0]) ? asset('storage/' . $item->product->image_path[0]) : asset('images/default.png') }}"
-                                        alt="{{ $item->product->name }}">
+                            <tr wire:key="{{ $item->id }}">
+                                <td class="py-4">
+                                    <div class="flex items-center">
+                                        <img class="w-[4vw]"
+                                            src="{{ isset($item->product->image_path[0]) ? asset('storage/' . $item->product->image_path[0]) : asset('images/default.png') }}"
+                                            alt="{{ $item->product->name }}">
+                                        <span
+                                            class="text-[2vw] ml-[1vw] font-semibold sm:text-[1.2vw]">{{ $item->product->name }}</span>
+                                    </div>
+                                </td>
+                                <td class="text-[3vw] py-4 sm:text-[1.2vw]">
+                                    {{ Number::currency($item->unit_amount, 'IDR') }}
+                                </td>
+                                <td class="py-4">
                                     <span
-                                        class="text-[2vw] sm:ml-[0vw] ml-[-4vw] font-semibold sm:text-[1.2vw]">{{ $item->product->name }}</span>
-                                </div>
-                            </td>
-                            <td class="text-[3vw] py-4 sm:text-[1.2vw]">
-                                {{ Number::currency($item->unit_amount, 'IDR') }}
-                            </td>
-                            <td class="py-4">
-                                <span
-                                    class="text-[3vw] sm:ml-[3.5vw] sm:text-[1.2vw] ml-[7vw] text-center w-8">{{ $item->quantity }}</span>
-                            </td>
-                            <td class="py-4 text-[3vw] sm:text-[1.2vw]">
-                                {{ Number::currency($item->unit_amount, 'IDR') }}
-                            </td>
-                        </tr>
+                                        class="text-[3vw] sm:ml-[3.5vw] sm:text-[1.2vw] ml-[7vw] text-center w-8">{{ $item->quantity }}</span>
+                                </td>
+                                <td class="py-4 text-[3vw] sm:text-[1.2vw]">
+                                    {{ Number::currency($item->unit_amount, 'IDR') }}
+                                </td>
+                            </tr>
                         @endforeach
 
                         <!--[if ENDBLOCK]><![endif]-->
