@@ -48,6 +48,11 @@ class CheckoutPage extends Component
             $user->save();
 
             $redirect_url = route('success');
+
+        } elseif ($this->payment_method === 'Cash') {
+            // Tidak perlu kurangi saldo
+            $redirect_url = route('success');
+
         } else {
             // Pembayaran via kartu -> proses Stripe
             $line_items = [];
@@ -75,6 +80,7 @@ class CheckoutPage extends Component
 
             $redirect_url = $sessionCheckout->url;
         }
+
 
     // Buat dan simpan order
     $order = new Order();
