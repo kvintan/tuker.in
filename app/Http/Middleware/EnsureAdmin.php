@@ -10,7 +10,7 @@ class EnsureAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check() || auth()->user()->email !== 'admin@gmail.com') {
+        if (!auth()->check() || auth()->user()->role !== 'admin') {
             abort(403, 'Unauthorized');
         }
 
