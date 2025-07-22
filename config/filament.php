@@ -94,8 +94,6 @@ return [
     'base' => [
         \Filament\Http\Middleware\DisableBladeIconComponents::class,
         \Filament\Http\Middleware\DispatchServingFilamentEvent::class,
-        \Filament\Http\Middleware\BootstrapComponents::class,
-        \Filament\Http\Middleware\BuildNavigation::class,
     ],
 ],
 
