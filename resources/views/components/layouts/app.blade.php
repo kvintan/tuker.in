@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     <title>{{ $title ?? 'Tuker.in' }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('build/assets/app-dRfi4HNV.css') }}">
+    <script src="{{ asset('build/assets/app-CfT-dRXo.js') }}" defer></script>
     @livewireStyles
 </head>
 
