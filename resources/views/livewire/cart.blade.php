@@ -70,7 +70,7 @@
                     toast: true,
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Produk berhasil dihapus dari keranjang!',
+                    title: 'Product successfully deleted from cart!',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true

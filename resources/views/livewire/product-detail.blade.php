@@ -38,7 +38,7 @@
                     toast: true,
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Produk berhasil ditambahkan ke keranjang!',
+                    title: 'Product successfully added to cart!',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true
