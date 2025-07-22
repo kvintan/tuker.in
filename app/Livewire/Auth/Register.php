@@ -24,17 +24,20 @@ class Register extends Component
     {
         $this->validate();
 
+        // Set role otomatis: admin untuk email tertentu, sisanya user
+        $role = $this->email === 'admin@gmail.com' ? 'admin' : 'user';
+
         User::create([
             'name' => $this->name,
             'phone_number' => $this->phoneNumber,
             'email' => $this->email,
             'address' => $this->address,
             'password' => Hash::make($this->password),
+            'role' => $role, // tambahkan ini
         ]);
 
         session()->flash('success', 'Registration successful. You can now log in.');
         
-        // Optionally clear the form
         $this->reset(['name', 'phoneNumber', 'email', 'address', 'password']);
 
         return redirect()->to('/login');
