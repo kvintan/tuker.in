@@ -12,6 +12,8 @@ class EnsureAdmin
     {
         $user = auth()->user();
 
+        dd(auth()->user());
+
         if (!$user) {
             // Belum login, redirect ke home atau login
             return redirect('/');
