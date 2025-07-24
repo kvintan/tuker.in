@@ -34,8 +34,18 @@
                     }
                 }" x-init="setInterval(() => { if (countdown > 0) countdown-- }, 1000)"
                     class="bg-white shadow-md rounded-2xl overflow-hidden p-4 w-full max-w-xs border-2 border-black flex flex-col items-center">
-                    <img src="{{ isset($product->image_path[0]) ? asset('storage/' . $product->image_path[0]) : asset('images/default.png') }}"
-                        alt="{{ $product->name }}" class="w-full h-52 object-cover rounded-xl mb-4">
+                    @php
+                        use Illuminate\Support\Str;
+                        $imagePath = $product->image_path ?? '';
+                        $imageUrl =
+                            Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
+                                ? asset('storage/' . $imagePath)
+                                : asset('images/' . $imagePath);
+                    @endphp
+
+                    <img src="{{ $imageUrl }}" alt="{{ $product->name }}"
+                        class="w-full h-52 object-cover rounded-xl mb-4">
+
 
                     {{-- Countdown Timer --}}
                     <div

@@ -19,7 +19,6 @@
 
                     <img src="{{ $imageUrl }}" alt="{{ $product->name }}"
                         class="w-full h-[35vh] object-cover rounded-xl mb-4">
-                    <code class="text-sm text-red-500">{{ $imageUrl }}</code>
 
                     <div class="text-center">
                         <h2 class="text-xl font-inter font-bold text-black mb-2 hover:underline">{{ $product->name }}
