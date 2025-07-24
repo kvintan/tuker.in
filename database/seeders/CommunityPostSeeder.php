@@ -16,14 +16,14 @@ class CommunityPostSeeder extends Seeder
 
         CommunityPost::create([
             'user_id' => $user->id,
-            'image' => 'posts/post.jpg',
+            'image' => 'coaster.png',
             'caption' => $faker->sentence(),
             'likes' => 12,
         ]);
 
         CommunityPost::create([
             'user_id' => $user->id,
-            'image' => 'posts/post.jpg',
+            'image' => 'laptopStand.png',
             'likes' => 5,
         ]);
     }
