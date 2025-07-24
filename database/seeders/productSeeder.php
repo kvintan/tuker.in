@@ -18,37 +18,37 @@ class ProductSeeder extends Seeder
             'name' => 'Liquid Soap Dispenser',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 15000,
-            'image_path' => 'images/product1.png',
+            'image_path' => 'product1.png',
         ],
         [
             'name' => 'Coaster',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 25000,
-            'image_path' => 'images/coaster.png',
+            'image_path' => 'coaster.png',
         ],
         [
             'name' => 'Tumbler',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 23000,
-            'image_path' => 'images/tumblr.png',
+            'image_path' => 'tumblr.png',
         ],
         [
             'name' => 'Plantpot',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 35000,
-            'image_path' => 'images/plankpot.png',
+            'image_path' => 'plankpot.png',
         ],
         [
             'name' => 'Laptop Stand',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 55000,
-            'image_path' => 'images/laptopStand.png',
+            'image_path' => 'laptopStand.png',
         ],
         [
             'name' => 'Table Lamp',
             'description' => 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'price' => 15000,
-            'image_path' => 'images/lamp.png',
+            'image_path' => 'lamp.png',
         ],
     ];
 
