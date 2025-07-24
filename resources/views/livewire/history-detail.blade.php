@@ -156,7 +156,7 @@
                                 <td class="py-4">
                                     <div class="flex items-center">
                                         @php
-                                            $imagePath = $item->product->image_path[0] ?? '';
+                                            $imagePath = $item->product->image_path ?? '';
                                             $imageUrl = $imagePath
                                                 ? (Str::startsWith($imagePath, 'products/') ||
                                                 Str::startsWith($imagePath, 'uploads/')
