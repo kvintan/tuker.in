@@ -8,7 +8,16 @@
             <a href="/product/{{ $product->slug }}">
                 <div
                     class="bg-white shadow-md rounded-2xl overflow-hidden p-4 w-full border-2 border-black flex flex-col items-center hover:shadow-lg transition min-h-[400px]">
-                    <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}"
+
+                    @php
+                        $imagePath = $product->image_path[0] ?? '';
+                        $imageUrl =
+                            Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
+                                ? asset('storage/' . $imagePath)
+                                : asset('images/' . $imagePath);
+                    @endphp
+
+                    <img src="{{ $imageUrl }}" alt="{{ $product->name }}"
                         class="w-full h-[35vh] object-cover rounded-xl mb-4">
 
                     <div class="text-center">
