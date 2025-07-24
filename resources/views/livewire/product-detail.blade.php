@@ -1,8 +1,18 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
     <div class="flex flex-row">
-        <img src="{{ asset('storage/' . $product->image_path[0]) }}" alt="{{ $product->name }}"
-            class="ml-[2vw] mt-[5vh] w-[30vw] h-[70vh]">
+        @php
+            $imagePath = $product->image_path ?? '';
+            $imageUrl = $imagePath
+                ? (Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
+                    ? asset('storage/' . $imagePath)
+                    : asset('images/' . $imagePath))
+                : asset('images/default.png');
+        @endphp
+
+        <img src="{{ $imageUrl }}" alt="{{ $product->name }}"
+            class="ml-[2vw] mt-[5vh] w-[30vw] h-[70vh] object-cover rounded-xl">
+
         <div class="ml-[5vw] mt-[9vh]">
             <h1 class="font-inter text-[3vw] font-bold">{{ $product->name }}</h1>
             <p class="text-[#37654E] mt-[1vh] text-[1.5vw] mb-4 font-inter">IDR

@@ -155,9 +155,18 @@
                             <tr wire:key="{{ $item->id }}">
                                 <td class="py-4">
                                     <div class="flex items-center">
-                                        <img class="w-[4vw]"
-                                            src="{{ isset($item->product->image_path[0]) ? asset('storage/' . $item->product->image_path[0]) : asset('images/default.png') }}"
-                                            alt="{{ $item->product->name }}">
+                                        @php
+                                            $imagePath = $item->product->image_path[0] ?? '';
+                                            $imageUrl = $imagePath
+                                                ? (Str::startsWith($imagePath, 'products/') ||
+                                                Str::startsWith($imagePath, 'uploads/')
+                                                    ? asset('storage/' . $imagePath)
+                                                    : asset('images/' . $imagePath))
+                                                : asset('images/default.png');
+                                        @endphp
+
+                                        <img class="w-[4vw]" src="{{ $imageUrl }}" alt="{{ $item->product->name }}">
+
                                         <span
                                             class="text-[2vw] ml-[1vw] font-semibold sm:text-[1.2vw]">{{ $item->product->name }}</span>
                                     </div>

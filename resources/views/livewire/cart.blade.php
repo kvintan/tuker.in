@@ -10,8 +10,18 @@
             @php $key = 'cart-' . $item['product_id']; @endphp
             <div class="border-b pb-4 flex items-center gap-4 w-full">
                 <div class="w-20 h-20">
-                    <img src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['name'] }}"
+                    @php
+                        $imagePath = $item['image'] ?? '';
+                        $imageUrl = $imagePath
+                            ? (Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
+                                ? asset('storage/' . $imagePath)
+                                : asset('images/' . $imagePath))
+                            : asset('images/default.png');
+                    @endphp
+
+                    <img src="{{ $imageUrl }}" alt="{{ $item['name'] }}"
                         class="w-full h-full object-cover border rounded-2xl" />
+
                 </div>
 
                 <div class="flex-1 font-extrabold text-lg">{{ $item['name'] }}</div>
