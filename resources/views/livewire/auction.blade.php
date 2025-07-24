@@ -35,7 +35,6 @@
                 }" x-init="setInterval(() => { if (countdown > 0) countdown-- }, 1000)"
                     class="bg-white shadow-md rounded-2xl overflow-hidden p-4 w-full max-w-xs border-2 border-black flex flex-col items-center">
                     @php
-                        use Illuminate\Support\Str;
                         $imagePath = $product->image_path ?? '';
                         $imageUrl =
                             Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
