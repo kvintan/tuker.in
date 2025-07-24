@@ -10,7 +10,7 @@
                     class="bg-white shadow-md rounded-2xl overflow-hidden p-4 w-full border-2 border-black flex flex-col items-center hover:shadow-lg transition min-h-[400px]">
 
                     @php
-                        $imagePath = $product->image_path[0] ?? '';
+                        $imagePath = $product->image_path ?? '';
                         $imageUrl =
                             Str::startsWith($imagePath, 'products/') || Str::startsWith($imagePath, 'uploads/')
                                 ? asset('storage/' . $imagePath)
