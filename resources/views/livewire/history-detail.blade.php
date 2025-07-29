@@ -164,7 +164,7 @@
                                                     : asset('images/' . $imagePath))
                                                 : asset('images/default.png');
                                         @endphp
-
+                                        <p>{{ $imageUrl }}</p>
                                         <img class="w-[4vw]" src="{{ $imageUrl }}" alt="{{ $item->product->name }}">
 
                                         <span
