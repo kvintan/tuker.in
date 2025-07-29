@@ -90,8 +90,17 @@
 
                 <!-- ✅ Display Product Image -->
                 <div class="flex justify-center mb-4">
+                    @php
+                        $imagePath = $item->product->image_path ?? '';
+                        $imageUrl = $imagePath
+                        ? (Str::startsWith($imagePath, 'products/') ||
+                        Str::startsWith($imagePath, 'uploads/')
+                        ? asset('storage/' . $imagePath)
+                        : asset('images/' . $imagePath))
+                        : asset('images/default.png');
+                    @endphp
                     <img class="rounded-lg max-h-[200px] object-contain"
-                        src="{{ isset($product->image_path[0]) ? asset('storage/' . $product->image_path[0]) : asset('images/default.png') }}"
+                        src="{{ $imageUrl }}"
                         alt="{{ $product->name }}">
                 </div>
 
