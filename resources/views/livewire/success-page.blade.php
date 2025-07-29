@@ -49,6 +49,8 @@
                                 BNI Debit/Credit Card
                             @elseif ($order->payment_method == 'Mandiri Debit/Credit Card')
                                 Mandiri Debit/Credit Card
+                            @elseif ($order->payment_method == 'Tuker.in Balance')
+                                Tuker.in Balance
                             @endif
                         </p>
                     </div>
@@ -87,7 +89,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-start gap-4 px-4 mt-6 ">
-                    <a wire:navigate href="/menu"
+                    <a wire:navigate href="/product"
                         class="w-full text-center px-4 py-2 text-[#1C4816] border border-[#1C4816] rounded-md md:w-auto hover:text-white hover:bg-[#1C4816]">
                         Go back shopping
                     </a>
