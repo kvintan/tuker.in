@@ -91,7 +91,7 @@
                 <!-- ✅ Display Product Image -->
                 <div class="flex justify-center mb-4">
                     @php
-                        $imagePath = $item->product->image_path ?? '';
+                        $imagePath = $product->image_path ?? '';
                         $imageUrl = $imagePath
                         ? (Str::startsWith($imagePath, 'products/') ||
                         Str::startsWith($imagePath, 'uploads/')
